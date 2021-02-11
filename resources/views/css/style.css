@@ -1,0 +1,44 @@
+a:hover{
+    text-decoration: none;
+}
+h1{font-size: 1rem;}
+h5 {
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.thingsBox.thinsSpace {
+    margin: 15px 0;
+}
+.thingsImage {
+    overflow: hidden;
+    border-radius: 0;
+    border: 0;
+    position: relative;
+    box-shadow: none;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+}
+.thingsMask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .55);
+    position: absolute;
+    border-radius: 0;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: all .4s;
+    padding: 40px 12px;
+}
+.footerWhite {
+    background-color: aliceblue;
+}
+ul li{list-style: none;}
+.footerWhite .useLink ul li a {
+    color: #848484;
+}
+.footerWhite .useLink ul li a:hover{
+    color: #2196f3;
+    text-decoration: underline;
+}

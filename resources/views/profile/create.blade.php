@@ -1,0 +1,43 @@
+@extends('profile.layout')
+  
+@section('content')
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('profile.index') }}"> Back</a>
+        </div>
+    </div>
+</div>
+   
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+   
+<form action="{{ route('profile.store') }}" method="POST">
+    @csrf
+  
+    
+        
+   
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">College Name</label>
+      <input type="name"  name="college_name" class="form-control" id="inputName4" placeholder="Enter Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">State</label>
+      <input type="location"  name="location" class="form-control" id="inputState4" placeholder="Enter State Name">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+@endsection
