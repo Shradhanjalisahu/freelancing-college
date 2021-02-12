@@ -3,6 +3,11 @@
 
 @section('style')
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<style>
+		.branch_nm{
+			text-transform: capitalize;
+		}
+	</style>
 @endsection
 
 @section('content')
@@ -27,7 +32,7 @@
         @endif
         
     </h5>
-    <h3><a href="{{url('home')}} ">Home</a></h3>
+    <h3><a href="{{url('home')}} ">Home</a>  @if($branch_name) / <a href="#" class="branch_nm">{{$branch_name}}</a>@endif</h3>
     
 </div>
 					<div class="row" >
@@ -91,24 +96,53 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			function getUrlData(){
-				console.log(URL)
+			function getBranchNameFromURL(){
+				var currentUrl = location.href.split('/');
+				if(currentUrl.length > 4){
+					return currentUrl[currentUrl.length-1];
+				}
+				return "";	
 			}
-			getUrlData();
+
+
 			$('#state_id').select2({
 				placeholder: "Select states",
 			});
 			$('#city_id').select2({
 				placeholder: "Select cities",
 			});
-			$(document).on('change','#state_id',function(){
-				var state_id = $(this).val();
-				var state_name = $(this).find(':selected').data('name');
+
+			function renderColleges(params){
+				var state_id = $('#state_id').val();
+				var city_id = $('#city_id').val();
+				var branch_name = getBranchNameFromURL();
+				var state_name = $('#state_id').find(':selected').data('name');
 				if(state_name != undefined){
 					$('#result-text').html('Showing best colleges of '+state_name);
 				} else {
 					$('#result-text').html('');
 				}
+				$.ajax({
+					method: "POST",
+					url:"{{route('get-colleges')}}",
+					data:{
+						'_token': "{{csrf_token()}}",
+						'state_id[]' : state_id,
+						'city_id[]' : city_id,
+						'branch_name[]': branch_name
+					},
+					success:function(response){
+						if(response.success){
+							$('#main-result').html(response.success);
+							if(!city_id.length){
+								renderCities(state_id)
+							}
+						}
+					}
+				});
+			}
+
+			function renderCities(state_id){
 				$.ajax({
 					method: "POST",
 					url:"{{route('get-cities')}}",
@@ -123,47 +157,22 @@
 							$('#city_id').select2({
 								placeholder: "Select cities",
 							});
-							
+							$(document).on('change', '#city_id', onCityChange);
 						}
 					}
 				});
+			}
 
-				$.ajax({
-					method: "POST",
-					url:"{{route('get-colleges')}}",
-					data:{
-						'_token': "{{csrf_token()}}",
-						'state_id[]' : state_id,
-						'city_id[]' : $('#city_id').val(),
-					},
-					success:function(response){
-						if(response.success){
-							$('#main-result').html(response.success);
-							
-						}
-					}
-				});
-			});
+			function onStateChange(){
+				renderColleges();
+			}
 
-			$(document).on('change','#city_id',function(){
-				var city_id = $(this).val();
-				
-				$.ajax({
-					method: "POST",
-					url:"{{route('get-colleges')}}",
-					data:{
-						'_token': "{{csrf_token()}}",
-						'state_id[]' : $('#state_id').val(),
-						'city_id[]' : city_id,
-					},
-					success:function(response){
-						if(response.success){
-							$('#main-result').html(response.success);
-							
-						}
-					}
-				});
-			});
+			function onCityChange(){
+				renderColleges();
+			}
+
+			$(document).on('change', '#state_id', onStateChange);
+			
 		})
 	</script>
 @endsection

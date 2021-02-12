@@ -21,7 +21,7 @@
 
       @foreach($branchList as $branch)
           <div class="col-sm-3 col-xs-6">
-            <a href="" class="interestContent">
+            <a href="/index/{{strtolower($branch->branch_name)}}" class="interestContent">
               <span>
                 <img src="https://aglasem-cdn.s3.ap-south-1.amazonaws.com/icons8-images/engineering.png">               <!-- <img src="/assets/new-theme/images/home-icon/engineering.png" alt="engineering" style="width: 3rem;margin-bottom:1rem;" class="stream_icon" > -->
                 <br />

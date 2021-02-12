@@ -1001,51 +1001,42 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                     <div class="col-md col-12">
                         <div aria-label="breadcrumb">
                             <ol class="breadcrumb p-1 rounded-0 px-2 mb-0" vocab="https://schema.org/" typeof="BreadcrumbList">
-                                <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><a class="text-body" href="/" property="item" typeof="WebPage"><span property="name">Home </span></a>
+                                <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+                                    <a class="text-body" href="#" property="item" typeof="WebPage">
+                                        <span property="name"><a href="/">Home</a></span> / 
+                                        <span>
+                                            @if ($college) 
+                                                <a href="list/{{explode('-',$college->url)[0]}}">{{explode('-',$college->url)[0]}}</a> 
+                                            @endif
+                                        </span> / 
+                                        <span>
+                                            @if ($college) 
+                                                <a href="list/{{explode('-',$college->url)[0]}}/{{explode('-',$college->url)[1]}}">{{explode('-',$college->url)[1]}}</a>
+                                            @endif
+                                        </span>
+                                    </a>
                                     <meta property="position" content="1" />
                                 </li>
-                                
-                                
-
-
-
                             </ol>
 
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
                                 <h1 class="mt-3" style="font-size: 1rem;">ABOUT COLLEGE
-
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i></span>
-
-
-
-
                                 </h1>
                                 <!-- <i class="far fa-heart my-auto pt-2 ml-2 cursor-pointer" title="Add to favourite"></i> -->
-
-
-
                             </div>
                             <div class="row ml-0 mt-1">
                                 <div class="col-md-auto col-6 pl-0 pr-md-2 px-0">
                                     <i class="fas fa-university text-danger"> </i> <span> ESTD 2012 </span>
                                 </div>
-
-                               
-
-
                                 <div class="col-md-auto col-6 px-md-2 px-0">
                                     <i class="fas fa-check-circle text-danger"></i><span> AICTE </span>
                                 </div>
-
-
                                 <div class="col-md-auto col-6 px-md-2 px-0">
                                     <i class="fas fa-star text-danger"> </i> <span> Private </span>
                                 </div>
-
-
-
                             </div>
                             <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -1059,7 +1050,6 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                                 <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -1067,16 +1057,15 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                         <div class="row mt-2">
                             <!-- rating display -->
                             <!--
- <span id="topAvgRating" class="col-auto pr-0">
-                 <ul class="list-inline rating rating-review" style="display:inline-block">
-                   <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
-                   <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
-                   <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
-                   <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
-                   <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
-                 </ul>
-               </span>
--->
+                            <span id="topAvgRating" class="col-auto pr-0">
+                                <ul class="list-inline rating rating-review" style="display:inline-block">
+                                <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
+                                <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
+                                <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
+                                <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
+                                <li class="list-inline-item mr-0"><i class="fas fa-star " aria-hidden="true"></i></li>
+                                </ul>
+                            </span>-->
                             <div class="col-auto pl-1" id="showReview">
                                 <span id="totalReview" title="Total Reviews"></span>
                                 <ul class="list-inline captionItem">
@@ -3137,8 +3126,6 @@ width:50px !important;
                             console.log('error', xhr);
                         }
                     });
-
-
 
                 }
             </script>

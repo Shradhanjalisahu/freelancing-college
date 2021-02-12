@@ -48,16 +48,21 @@ class CollegeadminController extends Controller
             $url_params = $request->getRequestUri();
             $uri_segments = explode('/', $url_params);
             $states = State::orderBy('state_name')->get();
-            if($uri_segments[2]){
-                $colleges = Branch::where('branch_name', '=', $uri_segments[2])
-                    ->with(['colleges'])
+            $branch_name = "";
+            if(count($uri_segments) > 2 && $uri_segments[2]){
+                $branch_name = $uri_segments[2];
+                $branch = Branch::where('branch_name', $uri_segments[2])
+                    ->get(["branch_name","id"]);
+                if(count($branch)){
+                    $colleges = Colleges::where('branch_id', $branch[0]['id'])
                     ->get();
+                } 
             }else{
                 $colleges = Colleges::all();
             }
     
             $total = $colleges->count();
-            return view('index',compact('states','colleges','total'));
+            return view('index',compact('states','colleges','total', 'branch_name'));
         }catch(Exception $e){
             print_r($e);
         }
@@ -161,24 +166,37 @@ class CollegeadminController extends Controller
 
     public function getColleges(Request $request)
     {
-        $colleges = new Colleges();
-        if(isset($request->state_id) && $request->state_id != null){
-            $colleges = $colleges->whereIn('state_id',$request->state_id);
-        }
-        if(isset($request->city_id) && $request->city_id != null){
-            $colleges = $colleges->whereIn('city_id',$request->city_id);
-        }
-        if(isset($request->branch_name) && $request->branch_name != null){
-            // $colleges = $colleges->whereIn('city_id',$request->city_id);
-        }
-        $colleges = $colleges->get();
-        $total = $colleges->count();
+       try {
+            $colleges = new Colleges();
+            $branch = [];
+            if(isset($request->branch_name) && $request->branch_name != null){
+                $branch = Branch::where('branch_name', $request->branch_name)
+                            ->get(["branch_name","id"]);
+            }
+            if(count($branch)){
+                $colleges = $colleges->where('branch_id', $branch[0]['id']);
+            }
+            if(isset($request->state_id) && $request->state_id != null){
+                $colleges = $colleges->whereIn('state_id',$request->state_id);
+            }
+            if(isset($request->city_id) && $request->city_id != null){
+                $colleges = $colleges->whereIn('city_id',$request->city_id);
+            }
+            // $sql = $colleges->toSql();
+            $colleges = $colleges->get();
+            $total = $colleges->count();
 
-        $html = view('ajax.get_colleges',compact('colleges','total'))->render();
+            $html = view('ajax.get_colleges',compact('colleges','total'))->render();
 
-        return response()->json([
-            'success' => $html,
-        ]);
+            return response()->json([
+                'success' => $html,
+            ]);
+
+       } catch (Exception $th) {
+           return response()->json([
+               'success' => $th,
+           ]);
+       }
 
     }
 
