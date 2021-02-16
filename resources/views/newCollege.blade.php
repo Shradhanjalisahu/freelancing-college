@@ -223,7 +223,8 @@
 				$('#state_id').val("{{old('state_id')}}").change();
 			@endif
 			$(document).on('change','#state_id',function(){
-				var state_id = $(this).val();
+				var stateData = $(this).val().split('##');
+				var state_id = stateData[0];
 				$.ajax({
 					method: "POST",
 					url:"{{route('get-cities')}}",
@@ -231,6 +232,7 @@
 						'_token': "{{csrf_token()}}",
 						'state_id[]' : state_id,
 						'multiple' : false,
+						'hashed_type': true
 					},
 					success:function(response){
 						if(response.success){

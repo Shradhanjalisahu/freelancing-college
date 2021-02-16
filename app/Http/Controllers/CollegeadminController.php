@@ -89,7 +89,6 @@ class CollegeadminController extends Controller
 
     public function saveCollege(Request $request)
     {
-
         $this->validate($request,[
             'collegeName' => 'required|max:255',
             'location' => 'required|max:255',
@@ -107,11 +106,13 @@ class CollegeadminController extends Controller
             'highlight' => 'required'
 
         ]);
+        $stateData = explode('##', $request->state_id);
+        $cityData = explode('##', $request->city_id);
         $college = new Colleges;
         $college->collegeName = $request->collegeName;
         $college->location = $request->location;
         //$college->aboutCollege = $request->about;
-        $collegeUrl = $request->collegeName.' '.$request->location;
+        $collegeUrl = $request->collegeName.' '.$stateData[1].' '.$cityData[1];
         $college->url = str_replace(" ","-",$collegeUrl);
         $college->contact = $request->contact;
         $college->email = $request->email;
@@ -123,8 +124,8 @@ class CollegeadminController extends Controller
         $college->history = $request->history;
         $college->name = $request->name;
         $college->state = $request->state;
-        $college->state_id = $request->state_id;
-        $college->city_id = $request->city_id;
+        $college->state_id = $stateData[0];
+        $college->city_id = $cityData[0];
         $college->branch_id = $request->branch_id;
         $college->mission = $request->mission;
 
@@ -154,9 +155,14 @@ class CollegeadminController extends Controller
     public function getCities(Request $request)
     {
         $cities = City::whereIn('state_id',$request->state_id)->get();
+        $hashed_type = $request->hashed_type;
         $multiple = $request->multiple;
-        $html = view('ajax.city_ajax',compact('cities','multiple'))->render();
-
+        if(!isset($hashed_type)){
+            $html = view('ajax.city_ajax',compact('cities','multiple'))->render();
+        }else{
+            $html = view('ajax.hashed_city_ajax',compact('cities','multiple'))->render();
+        }
+        
         return response()->json([
             'success' => $html,
         ]);
