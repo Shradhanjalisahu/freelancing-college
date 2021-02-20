@@ -26,11 +26,15 @@ Route::get('/', [CollegeadminController::class, 'index']);
 
 
 Auth::routes();
+Route::get('/addbranch', [CollegeadminController::class, 'addBranch']);
+Route::get('/addstate', [CollegeadminController::class, 'addState']);
 Route::get('/newcollege', [CollegeadminController::class, 'newCollege']);
 Route::get('/home', [CollegeadminController::class, 'homePage']);
 
 
 Route::post('/savenewcollege', [CollegeadminController::class, 'saveCollege'])->name('add-college');
+Route::post('/savenewbranch', [CollegeadminController::class, 'saveBranch'])->name('add-branch');
+Route::post('/savenewstate', [CollegeadminController::class, 'saveState'])->name('add-state');
 Route::get('/collegedetail/{collegeurl}/', [CollegeadminController::class, 'detail']);
 
 
@@ -40,24 +44,6 @@ Route::get('/index/{branch_name}', [CollegeadminController::class, 'view']);
 Route::post('get-city-by-state', [CollegeadminController::class, 'getCity']);
 Route::post('get-univercity-by-city', [CollegeadminController::class, 'getUnivercity']);
 
-
-use App\Http\Controllers\FilterController;
-Route::resource('user','App\Http\Controllers\FilterController');
-
-  
-
-
-    
-
-
-
-
-
-
-  
-
-  
-Route::resource('backend','App\Http\Controllers\DashboardController'); 
 
 
 Auth::routes();

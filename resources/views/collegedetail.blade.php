@@ -1006,12 +1006,12 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                         <span property="name"><a href="/">Home</a></span> / 
                                         <span>
                                             @if ($college) 
-                                                <a href="list/{{explode('-',$college->url)[0]}}">{{explode('-',$college->url)[0]}}</a> 
+                                                <a href="list/{{explode('-',$college->url)[1]}}">{{explode('-',$college->url)[0]}}</a> 
                                             @endif
                                         </span> / 
                                         <span>
                                             @if ($college) 
-                                                <a href="list/{{explode('-',$college->url)[0]}}/{{explode('-',$college->url)[1]}}">{{explode('-',$college->url)[1]}}</a>
+                                                <a href="list/{{explode('-',$college->url)[1]}}/{{explode('-',$college->url)[2]}}">{{explode('-',$college->url)[1]}}</a>
                                             @endif
                                         </span>
                                     </a>
@@ -1022,7 +1022,7 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
-                                <h1 class="mt-3" style="font-size: 1rem;">ABOUT COLLEGE
+                                <h1 class="mt-3" style="font-size: 1rem;"> @if ($college)  {{strtoupper($college->collegeName)}}   @endif
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i></span>
                                 </h1>
                                 <!-- <i class="far fa-heart my-auto pt-2 ml-2 cursor-pointer" title="Add to favourite"></i> -->

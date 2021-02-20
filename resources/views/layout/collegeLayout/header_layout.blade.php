@@ -102,7 +102,8 @@
                 <li class="">
                   <a href="javascript:0">Home</a>
                   <ul class="dropdown">
-                    <li><a href="index.html">Home Map</a></li>
+                    <li><a href="{{url('addbranch')}}">Add Branch</a></li>
+                    <li><a href="{{url('addstate')}}">Add State</a></li>
                     
                   </ul>
                 </li>

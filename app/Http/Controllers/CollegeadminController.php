@@ -25,6 +25,20 @@ class CollegeadminController extends Controller
     }
 
 
+    public function addBranch(Request $request)
+    {
+        $branchList = Branch::orderBy('branch_name')->get();
+        
+        return view('addBranch',compact('branchList'));
+    }
+
+    public function addState(Request $request)
+    {
+       
+        $states = State::orderBy('state_name')->get();
+        return view('addState',compact('states'));
+    }
+
     public function newCollege(Request $request)
     {
         $branchList = Branch::orderBy('branch_name')->get();
@@ -89,30 +103,34 @@ class CollegeadminController extends Controller
 
     public function saveCollege(Request $request)
     {
-        $this->validate($request,[
-            'collegeName' => 'required|max:255',
-            'location' => 'required|max:255',
-            'contact' => 'required|digits_between:10,11',
-            'name' => 'required|max:255',
-            'state_id' => 'required|integer',
-            'city_id' => 'required|integer',
-            'branch_id' => 'required|integer',
-            'course' => 'required|max:255',
-            'email' => 'required|max:255',
-            'address' => 'required|max:255',
-            'facilites' => 'required|max:255',
-            'history' => 'required',
-            'mission' => 'required',
-            'highlight' => 'required'
 
-        ]);
+        
+        // $this->validate($request,[
+        //     'collegeName' => 'required|max:255',
+        //     'location' => 'required|max:255',
+        //     'contact' => 'required|digits_between:10,11',
+        //     'name' => 'required|max:255',
+        //     'state_id' => 'required|integer',
+        //     'city_id' => 'required|integer',
+        //     'branch_id' => 'required|integer',
+        //     'course' => 'required|max:255',
+        //     'email' => 'required|max:255',
+        //     'address' => 'required|max:255',
+        //     'facilites' => 'required|max:255',
+        //     'history' => 'required',
+        //     'mission' => 'required',
+        //     'highlight' => 'required'
+
+        // ]);
+        
+
         $stateData = explode('##', $request->state_id);
         $cityData = explode('##', $request->city_id);
         $college = new Colleges;
         $college->collegeName = $request->collegeName;
         $college->location = $request->location;
         //$college->aboutCollege = $request->about;
-        $collegeUrl = $request->collegeName.' '.$stateData[1].' '.$cityData[1];
+        $collegeUrl = $request->collegeName.' '.$stateData[0].' '.$cityData[0];
         $college->url = str_replace(" ","-",$collegeUrl);
         $college->contact = $request->contact;
         $college->email = $request->email;
@@ -123,7 +141,7 @@ class CollegeadminController extends Controller
         $college->highlight = $request->highlight;
         $college->history = $request->history;
         $college->name = $request->name;
-        $college->state = $request->state;
+       // $college->state = $request->state;
         $college->state_id = $stateData[0];
         $college->city_id = $cityData[0];
         $college->branch_id = $request->branch_id;
@@ -131,7 +149,37 @@ class CollegeadminController extends Controller
 
         $college->save();
         return redirect('/')->with('success','College added successfully');
+        
+
     }
+     public function saveBranch(Request $request)
+    {
+
+        
+
+        $branch = new Branch;
+        $branch->branch_name = $request->branch_name;
+
+        $branch->save();
+        return redirect('home')->with('success','Branch added successfully');
+        
+
+    }
+
+    public function saveState(Request $request)
+    {
+
+       
+
+        $college = new Branch;
+        $branch->state_name = $request->state_name;
+
+        $branch->save();
+        return redirect('/')->with('success','State added successfully');
+        
+
+    }
+
 
 
     public function detail($collegeurl) {
