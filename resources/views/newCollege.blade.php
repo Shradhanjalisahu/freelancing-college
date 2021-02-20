@@ -133,7 +133,7 @@
 									<select name="state_id" id="state_id" class="form-control @error('state_id') is-invalid @enderror"  >
 										<option value="">Select State</option>
 										@foreach($states as $state)
-											<option value="{{$state->id}}" {{old('state_id') != null && old('state_id') == $state->id ? 'selected' : '' }}>{{$state->state_name}}</option>
+											<option value="{{$state->id.'##'.$state->state_name}}" {{old('state_id') != null && old('state_id') == $state->id ? 'selected' : '' }}>{{$state->state_name}}</option>
 										@endforeach
 									</select>
 									@error('state_id')
@@ -224,13 +224,12 @@
 			@endif
 			$(document).on('change','#state_id',function(){
 				var stateData = $(this).val().split('##');
-				var state_id = stateData[0];
 				$.ajax({
 					method: "POST",
 					url:"{{route('get-cities')}}",
 					data:{
 						'_token': "{{csrf_token()}}",
-						'state_id[]' : state_id,
+						'state_id[]' : stateData[0],
 						'multiple' : false,
 						'hashed_type': true
 					},

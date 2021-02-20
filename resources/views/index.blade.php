@@ -77,7 +77,9 @@
 						<select name="state_id[]" id="state_id" class="form-control form-control-lg" multiple>
 							<option value="">Select State</option>
 							@foreach($states as $state)
-								<option value="{{$state->id}}" data-name="{{$state->state_name}}">{{$state->state_name}}</option>
+								<option value="{{$state->id}}" data-name="{{$state_id}}">
+									{{$state->state_name}}
+								</option>
 							@endforeach
 						</select>
 					</div>

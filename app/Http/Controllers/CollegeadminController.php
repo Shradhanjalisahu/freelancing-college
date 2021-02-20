@@ -63,20 +63,55 @@ class CollegeadminController extends Controller
             $uri_segments = explode('/', $url_params);
             $states = State::orderBy('state_name')->get();
             $branch_name = "";
+            $query = [];
+            $colleges = [];
+            $state_id = '';
+            $city_id = '';
             if(count($uri_segments) > 2 && $uri_segments[2]){
-                $branch_name = $uri_segments[2];
-                $branch = Branch::where('branch_name', $uri_segments[2])
-                    ->get(["branch_name","id"]);
-                if(count($branch)){
-                    $colleges = Colleges::where('branch_id', $branch[0]['id'])
-                    ->get();
-                } 
+                if($uri_segments[2]=='list'){
+                    // if state is present
+                    if(count($uri_segments) > 3 && $uri_segments[3]){
+                        $state = State::where('state_name', $uri_segments[3])
+                            ->get(["state_name","id"]);
+                        if(count($state)){
+                            $query['state_id'] = $state[0]['id'];
+                            $state_id = $state[0]['id'];
+                        }
+                    }
+
+                    // if state and city present
+                    if(count($uri_segments) > 4 && $uri_segments[4]){
+                        $city = City::where('city_name', $uri_segments[4])
+                            ->get(["city_name","id"]);
+                        if(count($city)){
+                            $query['city_id'] = $city[0]['id'];
+                            $city_id = $city[0]['id'];
+                        }
+                    }
+
+                    // if there is any condition then just fetch the query
+                    if(count($query)){
+                        $colleges = Colleges::where($query)
+                            ->get();
+                    }
+                    
+                    
+                }else{
+                    // if the enpoint not containes list keyword in url then that means the query is for branch
+                    $branch_name = $uri_segments[2];
+                    $branch = Branch::where('branch_name', $uri_segments[2])
+                        ->get(["branch_name","id"]);
+                    if(count($branch)){
+                        $colleges = Colleges::where('branch_id', $branch[0]['id'])
+                        ->get();
+                    } 
+                }
             }else{
                 $colleges = Colleges::all();
             }
     
-            $total = $colleges->count();
-            return view('index',compact('states','colleges','total', 'branch_name'));
+            $total = count($colleges);
+            return view('index',compact('states','colleges','total', 'branch_name', 'state_id', 'city_id'));
         }catch(Exception $e){
             print_r($e);
         }
@@ -105,32 +140,29 @@ class CollegeadminController extends Controller
     {
 
         
-        // $this->validate($request,[
-        //     'collegeName' => 'required|max:255',
-        //     'location' => 'required|max:255',
-        //     'contact' => 'required|digits_between:10,11',
-        //     'name' => 'required|max:255',
-        //     'state_id' => 'required|integer',
-        //     'city_id' => 'required|integer',
-        //     'branch_id' => 'required|integer',
-        //     'course' => 'required|max:255',
-        //     'email' => 'required|max:255',
-        //     'address' => 'required|max:255',
-        //     'facilites' => 'required|max:255',
-        //     'history' => 'required',
-        //     'mission' => 'required',
-        //     'highlight' => 'required'
-
-        // ]);
-        
-
+        $this->validate($request,[
+            'collegeName' => 'required|max:255',
+            'location' => 'required|max:255',
+            'contact' => 'required|digits_between:10,11',
+            'name' => 'required|max:255',
+            'state_id' => 'required',
+            'city_id' => 'required',
+            'branch_id' => 'required|integer',
+            'course' => 'required|max:255',
+            'email' => 'required|max:255',
+            'address' => 'required|max:255',
+            'facilites' => 'required|max:255',
+            'history' => 'required',
+            'mission' => 'required',
+            'highlight' => 'required'
+        ]);
         $stateData = explode('##', $request->state_id);
         $cityData = explode('##', $request->city_id);
         $college = new Colleges;
         $college->collegeName = $request->collegeName;
         $college->location = $request->location;
         //$college->aboutCollege = $request->about;
-        $collegeUrl = $request->collegeName.' '.$stateData[0].' '.$cityData[0];
+        $collegeUrl = $request->collegeName.' '.$stateData[1].' '.$cityData[1];
         $college->url = str_replace(" ","-",$collegeUrl);
         $college->contact = $request->contact;
         $college->email = $request->email;
@@ -183,13 +215,9 @@ class CollegeadminController extends Controller
 
 
     public function detail($collegeurl) {
-       // $pattern = "/\s/";
-        //$replacement = "-";
         $data = [];
-       // $preg_replace = [];
         $college = Colleges::select('*')
                             ->where('url', '=', $collegeurl)
-                            
                             ->first();
 
         $data['college'] = $college;

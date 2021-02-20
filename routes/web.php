@@ -40,7 +40,10 @@ Route::get('/collegedetail/{collegeurl}/', [CollegeadminController::class, 'deta
 
 
 Route::get('/index', [CollegeadminController::class, 'view']);
+Route::get('/index/list/{state}', [CollegeadminController::class, 'view']);
+Route::get('/index/list/{state}/{city}/', [CollegeadminController::class, 'view']);
 Route::get('/index/{branch_name}', [CollegeadminController::class, 'view']);
+
 Route::post('get-city-by-state', [CollegeadminController::class, 'getCity']);
 Route::post('get-univercity-by-city', [CollegeadminController::class, 'getUnivercity']);
 

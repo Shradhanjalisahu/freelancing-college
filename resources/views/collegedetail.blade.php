@@ -1006,12 +1006,12 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                         <span property="name"><a href="/">Home</a></span> / 
                                         <span>
                                             @if ($college) 
-                                                <a href="list/{{explode('-',$college->url)[1]}}">{{explode('-',$college->url)[0]}}</a> 
+                                                <a href="/index/list/{{explode('-',$college->url)[1]}}">{{explode('-',$college->url)[1]}}</a> 
                                             @endif
                                         </span> / 
                                         <span>
                                             @if ($college) 
-                                                <a href="list/{{explode('-',$college->url)[1]}}/{{explode('-',$college->url)[2]}}">{{explode('-',$college->url)[1]}}</a>
+                                                <a href="/index/list/{{explode('-',$college->url)[1]}}/{{explode('-',$college->url)[2]}}">{{explode('-',$college->url)[2]}}</a>
                                             @endif
                                         </span>
                                     </a>
