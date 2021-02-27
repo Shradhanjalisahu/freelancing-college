@@ -14,10 +14,10 @@
          <div class="mb-6">
            <a href="{{url('newcollege')}}" class="btn btn-sm btn-success pull-right">Add New</a>
           </div>
-          
           <div class="mb-6">
-           <a href="{{url('index')}}" class="btn btn-sm btn-success pull-right">View College</a>
+           <a href="{{url('importfile')}}" class="btn btn-sm btn-success pull-right">Add csv file</a>
           </div>
+         
         </div>
       </form>
     </div>

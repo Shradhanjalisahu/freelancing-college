@@ -1006,12 +1006,12 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                         <span property="name"><a href="/">Home</a></span> / 
                                         <span>
                                             @if ($college) 
-                                                <a href="/index/list/{{explode('-',$college->url)[1]}}">{{explode('-',$college->url)[1]}}</a> 
+                                                <a href="/index/list/{{strtolower($college['state_name'])}}">{{$college['state_name']}}</a> 
                                             @endif
                                         </span> / 
                                         <span>
                                             @if ($college) 
-                                                <a href="/index/list/{{explode('-',$college->url)[1]}}/{{explode('-',$college->url)[2]}}">{{explode('-',$college->url)[2]}}</a>
+                                                <a href="/index/list/{{strtolower($college['state_name'])}}/{{strtolower($college['city_name'])}}">{{$college['city_name']}}</a>
                                             @endif
                                         </span>
                                     </a>
@@ -1022,8 +1022,18 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
-                                <h1 class="mt-3" style="font-size: 1rem;"> @if ($college)  {{strtoupper($college->collegeName)}}   @endif
+                                <h1 class="mt-3" style="font-size: 1rem;"> @if ($college)  {{strtoupper($college->collegeName)}}   @endif,
+                                            @if ($college) 
+                                               {{strtoupper($college['state_name'])}}
+                                            @endif,
+                                        
+                                       
+                                            @if ($college) 
+                                                {{strtoupper($college['city_name'])}}
+                                            @endif
+                                       
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i></span>
+              
                                 </h1>
                                 <!-- <i class="far fa-heart my-auto pt-2 ml-2 cursor-pointer" title="Add to favourite"></i> -->
                             </div>

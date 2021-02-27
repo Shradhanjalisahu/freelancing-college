@@ -29,6 +29,11 @@ Auth::routes();
 Route::get('/addbranch', [CollegeadminController::class, 'addBranch']);
 Route::get('/addstate', [CollegeadminController::class, 'addState']);
 Route::get('/newcollege', [CollegeadminController::class, 'newCollege']);
+Route::get('/importfile', [CollegeadminController::class, 'importCSVfile']);
+
+
+Route::post('/collegedetail/import', [CollegeadminController::class, 'import'])->name('import-file');
+
 Route::get('/home', [CollegeadminController::class, 'homePage']);
 
 
