@@ -32,7 +32,17 @@
         @endif
         
     </h6>
-    <h6><a href="{{url('home')}} ">Home</a>  @if($branch_name) / <a href="#" class="branch_nm">{{$branch_name}}</a>@endif</h6>
+    <h6><a href="{{url('home')}} ">Home</a>  
+    	@if($branch_name) / 
+    	<a href="#" class="branch_nm">{{$branch_name}}</a>
+    	@endif
+    	@if($state_name) / 
+    	<a href="#" class="branch_nm">{{$state_name}}</a>
+    	@endif
+    	@if($city_name) / 
+    	<a href="#" class="branch_nm">{{$city_name}}</a>
+    	@endif
+    </h6>
     
 </div>
 					<div class="row" >

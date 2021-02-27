@@ -11,7 +11,7 @@ use App\Models\State;
 use App\Models\City;
 use App\Models\Univercity;
 use App\Models\Branch;
-
+use Excel;
 use DB;
 
 class CollegeadminController extends Controller
@@ -47,6 +47,15 @@ class CollegeadminController extends Controller
     }
 
 
+    public function importCSVfile(Request $request)
+    {
+        $branchList = Branch::orderBy('branch_name')->get();
+        $states = State::orderBy('state_name')->get();
+        return view('importCSVfile',compact('states','branchList'));
+    }
+
+
+
      public function homePage(Request $request)
     {
         $branchList = Branch::all();
@@ -67,10 +76,13 @@ class CollegeadminController extends Controller
             $colleges = [];
             $state_id = '';
             $city_id = '';
+            $state_name = "";
+            $city_name = "";
             if(count($uri_segments) > 2 && $uri_segments[2]){
                 if($uri_segments[2]=='list'){
                     // if state is present
                     if(count($uri_segments) > 3 && $uri_segments[3]){
+                        $state_name = $uri_segments[3];
                         $state = State::where('state_name', $uri_segments[3])
                             ->get(["state_name","id"]);
                         if(count($state)){
@@ -81,6 +93,7 @@ class CollegeadminController extends Controller
 
                     // if state and city present
                     if(count($uri_segments) > 4 && $uri_segments[4]){
+                        $city_name = $uri_segments[4];
                         $city = City::where('city_name', $uri_segments[4])
                             ->get(["city_name","id"]);
                         if(count($city)){
@@ -111,7 +124,7 @@ class CollegeadminController extends Controller
             }
     
             $total = count($colleges);
-            return view('index',compact('states','colleges','total', 'branch_name', 'state_id', 'city_id'));
+            return view('index',compact('states','colleges','total', 'branch_name', 'state_id', 'city_id', 'city_name', 'state_name'));
         }catch(Exception $e){
             print_r($e);
         }
@@ -162,7 +175,7 @@ class CollegeadminController extends Controller
         $college->collegeName = $request->collegeName;
         $college->location = $request->location;
         //$college->aboutCollege = $request->about;
-        $collegeUrl = $request->collegeName.' '.$stateData[1].' '.$cityData[1];
+        $collegeUrl = strtolower($request->collegeName.' '.$stateData[1].' '.$cityData[1]);
         $college->url = str_replace(" ","-",$collegeUrl);
         $college->contact = $request->contact;
         $college->email = $request->email;
@@ -184,10 +197,10 @@ class CollegeadminController extends Controller
         
 
     }
-     public function saveBranch(Request $request)
-    {
 
-        
+
+     public function saveBranch(Request $request)
+       {
 
         $branch = new Branch;
         $branch->branch_name = $request->branch_name;
@@ -195,13 +208,13 @@ class CollegeadminController extends Controller
         $branch->save();
         return redirect('home')->with('success','Branch added successfully');
         
+      }
 
-    }
+
+
 
     public function saveState(Request $request)
     {
-
-       
 
         $college = new Branch;
         $branch->state_name = $request->state_name;
@@ -217,10 +230,21 @@ class CollegeadminController extends Controller
     public function detail($collegeurl) {
         $data = [];
         $college = Colleges::select('*')
-                            ->where('url', '=', $collegeurl)
-                            ->first();
+                    ->where('url', '=', $collegeurl)
+                    ->first();
+                  
+        $state = State::select('*')
+                ->where('id', $college['state_id'])
+                ->first();
+        
+        
+        $city = City::select('*')
+                ->where('id', $college['city_id'])
+                ->first();
 
         $data['college'] = $college;
+        $data['college']['state_name'] = $state['state_name'];
+        $data['college']['city_name'] = $city['city_name'];
        // $preg_replace['college,pattern,replacement'] = $college;
         return view('collegedetail', $data);
     }
@@ -243,6 +267,9 @@ class CollegeadminController extends Controller
             'success' => $html,
         ]);
     }
+
+
+
 
 
 
@@ -282,4 +309,67 @@ class CollegeadminController extends Controller
 
     }
 
+
+
+    function import(Request $request)
+    {
+
+    try{
+        $isValid = $this->validate($request, [
+            'select_file'  => 'required|mimes:xls,xlsx'
+        ]);
+
+        return $isValid;
+        $path = $request->file('select_file')->getRealPath();
+        return $path;
+
+    }catch(Exception $e){
+        return $e;
+    }
+
+
+     
+
+    //  $data = Excel::load($path)->get();
+    //    return $data;
+    //  if($data->count() > 0)
+    //  {
+    //   foreach($data->toArray() as $key => $value)
+    //   {
+    //    foreach($value as $row)
+    //    {
+    //     $insert_data[] = array(
+    //      'collegeName'  => $row['collegeName'],
+    //      'location'   => $row['location'], 
+    //      'address'   => $row['address'],
+    //      'contact'  => $row['contact'],
+    //      'email'   => $row['email'],
+    //      'facilites'   => $row['facilites'],
+    //      'course'  => $row['course'],
+    //      'mission'   => $row['mission'],
+    //      'highlight'   => $row['highlight'],
+    //      'history'   => $row['history'],
+    //       'name'   => $row['name'],
+    //       'state_id'   => $row['state_id'],
+    //       'city_id'   => $row['city_id'],
+    //       'branch_id'   => $row['branch_id'],
+    //       'mission'   => $row['mission'],
+    //     );
+        
+    //    }
+    //   }
+
+    //   if(!empty($insert_data))
+
+    //   {
+    //    DB::table('colleges')->insert($insert_data);
+    //    //return $insert_data;
+    //   }
+    //  }
+    // // return redirect('/')->with('success','College added successfully');
+    // }
+
+    
+
+}
 }
