@@ -11,8 +11,11 @@ use App\Models\State;
 use App\Models\City;
 use App\Models\Univercity;
 use App\Models\Branch;
+use App\Imports\ImportCollege;
 use Excel;
 use DB;
+use Session;
+
 
 class CollegeadminController extends Controller
 {
@@ -319,9 +322,19 @@ class CollegeadminController extends Controller
             'select_file'  => 'required|mimes:xls,xlsx'
         ]);
 
-        return $isValid;
-        $path = $request->file('select_file')->getRealPath();
-        return $path;
+        # Total number of rows in the sheet to session
+        Session::put('importResult');
+
+        Excel::import(new ImportCollege(), request()->file('select_file'));
+
+        $value = Session::get('importResult');
+        // return [ 
+        //     'status' => 'SUCCESS' , 
+        //     'statusCode' => 200,
+        //     'message' => 'Category Created Successful...',
+        //     'validation_status' => false
+        // ];
+        return $value;
 
     }catch(Exception $e){
         return $e;
