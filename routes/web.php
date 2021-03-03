@@ -33,6 +33,7 @@ Route::get('/importfile', [CollegeadminController::class, 'importCSVfile']);
 
 
 Route::post('/upload/college', [CollegeadminController::class, 'import'])->name('import-file');
+Route::get('/download/college', [CollegeadminController::class, 'exportCollege'])->name('export-college-details');
 
 Route::get('/home', [CollegeadminController::class, 'homePage']);
 

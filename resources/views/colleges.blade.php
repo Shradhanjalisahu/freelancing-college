@@ -11,13 +11,15 @@
       <h2 class="mb-5 mb-lg-0 font-weight-normal">COLLEGE DETAILS</h2>
       <form style="min-width: 200px">
         <div class="select-default bg-white">
-         <div class="mb-6">
+         <div class="mb-4">
            <a href="{{url('newcollege')}}" class="btn btn-sm btn-success pull-right">Add New</a>
           </div>
-          <div class="mb-6">
+          <div class="mb-4">
            <a href="{{url('importfile')}}" class="btn btn-sm btn-success pull-right">Add csv file</a>
           </div>
-         
+          <div class="mb-4">
+            <a href="{{route('export-college-details')}}" class="btn btn-sm btn-success pull-right">Export College Details</a>
+          </div>
         </div>
       </form>
     </div>

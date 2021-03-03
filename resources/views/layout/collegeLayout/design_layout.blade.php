@@ -41,12 +41,13 @@
 
 	@include('layout.collegeLayout.header_layout')
 
+    @include('helpers.toast')
+    
+    @yield('content')
+    
 
-@yield('content')
-
-
-@include('layout.collegeLayout.footer_layout')
- <script src="{{ asset('college_assets/assets/plugins/jquery/jquery-3.4.1.min.js')}}"></script>
+    @include('layout.collegeLayout.footer_layout')
+    <script src="{{ asset('college_assets/assets/plugins/jquery/jquery-3.4.1.min.js')}}"></script>
     <script src="{{ asset('college_assets/assets/plugins/bootstrap/js/bootstrap.bundle.js')}}"></script>
     <script src="{{ asset('college_assets/assets/plugins/menuzord/js/menuzord.js')}}"></script>
     <script src="{{ asset('college_assets/assets/plugins/selectric/jquery.selectric.min.js')}}"></script>
@@ -83,7 +84,8 @@
 
 
     <script src="{{ asset('college_assets/assets/js/listty.js')}}"></script>
-
+    
+    
     @yield('script')
 </body>
 </html>

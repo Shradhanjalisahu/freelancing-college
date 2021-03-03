@@ -339,8 +339,8 @@ class CollegeadminController extends Controller
     function exportCollege(Request $request){
         try {
             //code...
-            $fileName = 'COLLEGE_'+date("hisa");
-            return Excel::download(new ExportCollege, 'college');
+            $fileName = 'COLLEGE_'.date("hisa");
+            return Excel::download(new ExportCollege, $fileName.'.csv');
         } catch (Exception $e) {
             //throw $th;
             return $e;
