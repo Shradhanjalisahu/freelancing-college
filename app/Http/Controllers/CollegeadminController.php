@@ -12,6 +12,7 @@ use App\Models\City;
 use App\Models\Univercity;
 use App\Models\Branch;
 use App\Imports\ImportCollege;
+use App\Exports\ExportCollege;
 use Excel;
 use DB;
 use Session;
@@ -316,73 +317,33 @@ class CollegeadminController extends Controller
 
     function import(Request $request)
     {
+        try{
+            $isValid = $this->validate($request, [
+                'select_file'  => 'required|mimes:xls,xlsx'
+            ]);
 
-    try{
-        $isValid = $this->validate($request, [
-            'select_file'  => 'required|mimes:xls,xlsx'
-        ]);
+            # Total number of rows in the sheet to session
+            Session::put('importResult');
 
-        # Total number of rows in the sheet to session
-        Session::put('importResult');
+            Excel::import(new ImportCollege(), request()->file('select_file'));
 
-        Excel::import(new ImportCollege(), request()->file('select_file'));
+            $value = Session::get('importResult');
 
-        $value = Session::get('importResult');
-        // return [ 
-        //     'status' => 'SUCCESS' , 
-        //     'statusCode' => 200,
-        //     'message' => 'Category Created Successful...',
-        //     'validation_status' => false
-        // ];
-        return $value;
+            return $value;
 
-    }catch(Exception $e){
-        return $e;
+        }catch(Exception $e){
+            return $e;
+        }
     }
 
-
-     
-
-    //  $data = Excel::load($path)->get();
-    //    return $data;
-    //  if($data->count() > 0)
-    //  {
-    //   foreach($data->toArray() as $key => $value)
-    //   {
-    //    foreach($value as $row)
-    //    {
-    //     $insert_data[] = array(
-    //      'collegeName'  => $row['collegeName'],
-    //      'location'   => $row['location'], 
-    //      'address'   => $row['address'],
-    //      'contact'  => $row['contact'],
-    //      'email'   => $row['email'],
-    //      'facilites'   => $row['facilites'],
-    //      'course'  => $row['course'],
-    //      'mission'   => $row['mission'],
-    //      'highlight'   => $row['highlight'],
-    //      'history'   => $row['history'],
-    //       'name'   => $row['name'],
-    //       'state_id'   => $row['state_id'],
-    //       'city_id'   => $row['city_id'],
-    //       'branch_id'   => $row['branch_id'],
-    //       'mission'   => $row['mission'],
-    //     );
-        
-    //    }
-    //   }
-
-    //   if(!empty($insert_data))
-
-    //   {
-    //    DB::table('colleges')->insert($insert_data);
-    //    //return $insert_data;
-    //   }
-    //  }
-    // // return redirect('/')->with('success','College added successfully');
-    // }
-
-    
-
-}
+    function exportCollege(Request $request){
+        try {
+            //code...
+            $fileName = 'COLLEGE_'+date("hisa");
+            return Excel::download(new ExportCollege, 'college');
+        } catch (Exception $e) {
+            //throw $th;
+            return $e;
+        }
+    }
 }
