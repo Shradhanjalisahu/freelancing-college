@@ -47,7 +47,7 @@ class ImportCollege implements ToModel, WithStartRow
                 'contact'  => trim($row[13]),
                 'url'=>'',
                 'name'   => trim($row[2]),
-                'state' => trim($row[3]),
+               // 'state' => trim($row[3]),
                 'location'   => trim($row[1]), 
                 'state_id'   => trim($row[3]),
                 'city_id'   => trim($row[4]),
@@ -107,7 +107,7 @@ class ImportCollege implements ToModel, WithStartRow
 
             // validate the row
             $validator = Validator::make($insert_data, [
-                'collegeName' => 'required|max:255',
+                'collegeName' => 'required|unique:colleges||max:255',
                 'location' => 'required|max:255',
                 'contact' => 'required|digits_between:10,11',
                 'name' => 'required|max:255',

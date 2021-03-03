@@ -158,7 +158,7 @@ class CollegeadminController extends Controller
 
         
         $this->validate($request,[
-            'collegeName' => 'required|max:255',
+            'collegeName' => 'required|unique:colleges||max:255',
             'location' => 'required|max:255',
             'contact' => 'required|digits_between:10,11',
             'name' => 'required|max:255',
