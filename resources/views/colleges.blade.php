@@ -17,13 +17,14 @@
           <div class="mb-4">
            <a href="{{url('importfile')}}" class="btn btn-sm btn-success pull-right">Add csv file</a>
           </div>
-          <div class="mb-4">
-            <a href="{{route('export-college-details')}}" class="btn btn-sm btn-success pull-right">Export College Details</a>
-          </div>
+          
         </div>
       </form>
     </div>
-
+    <div class="mb-4">
+            <a href="{{route('export-college-details')}}" class="btn btn-sm btn-success pull-right">Export College Details</a>
+     </div>
+     <br>
     <table id="my-favourites" class="display nowrap table-data-default" style="width:100%">
       <thead>
         <tr class="table-row-bg-white">

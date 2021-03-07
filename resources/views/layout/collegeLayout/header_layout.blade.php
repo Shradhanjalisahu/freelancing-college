@@ -104,6 +104,8 @@
                   <ul class="dropdown">
                     <li><a href="{{url('addbranch')}}">Add Branch</a></li>
                     <li><a href="{{url('addstate')}}">Add State</a></li>
+                    <li><a href="{{url('addstate')}}">Add State</a></li>
+                    <li><a href="{{url('addcourses')}}">Add Courses </a></li>
                     
                   </ul>
                 </li>

@@ -1005,14 +1005,10 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                     <a class="text-body" href="#" property="item" typeof="WebPage">
                                         <span property="name"><a href="/">Home</a></span> / 
                                         <span>
-                                            @if ($college) 
-                                                <a href="/index/list/{{strtolower($college['state_name'])}}">{{$college['state_name']}}</a> 
-                                            @endif
+                                           
                                         </span> / 
                                         <span>
-                                            @if ($college) 
-                                                <a href="/index/list/{{strtolower($college['state_name'])}}/{{strtolower($college['city_name'])}}">{{$college['city_name']}}</a>
-                                            @endif
+                                           
                                         </span>
                                     </a>
                                     <meta property="position" content="1" />
@@ -1022,15 +1018,7 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
-                                <h1 class="mt-3" style="font-size: 1rem;"> @if ($college)  {{strtoupper($college->collegeName)}}   @endif,
-                                            @if ($college) 
-                                               {{strtoupper($college['state_name'])}}
-                                            @endif,
-                                        
-                                       
-                                            @if ($college) 
-                                                {{strtoupper($college['city_name'])}}
-                                            @endif
+                                <h1 class="mt-3" style="font-size: 1rem;"> 
                                        
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i></span>
               
@@ -1410,33 +1398,19 @@ return false;
                                 <a class="nav-link text-primary" href="/ace-college-of-engineering--management-agra">About </a>
                             </div>
 
-
+                            <div class="carousel-cell">
+                                <a class="nav-link text-dark" href="/ace-college-of-engineering--management-agra/admission-process" name="admission">Admission Process </a>
+                            </div>
 
                             <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="/ace-college-of-engineering--management-agra/scholarships" name="admission">Scholarship </a>
+                                <a class="nav-link  text-dark" href="/ace-college-of-engineering--management-agra/course-fees" name="course-and-fee">Courses & Fee </a>
                             </div>
 
 
 
-
-                            <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="{{url('admissionprocess')}}" name="admission">Admission Process </a>
-                            </div>
-
-                            <div class="carousel-cell">
-                                <a class="nav-link  text-dark" href="{{url('newcoursesfees')}}" name="course-and-fee">Courses & Fee </a>
-                            </div>
 
 
                            
-
-
-
-
-
-
-
-
 
                         </div>
 
@@ -1458,47 +1432,7 @@ return false;
                 <div class="row">
                    
                     <div class="col-lg-8 col-md-8 col-xs-12">
-                         @if ($college)
-
-                        <div class="listDetailsInfo">
-                              
-
-                            <div class="detailsInfoBox">
-                                <!-- <h5 class="pl-0">About This College</h5> -->
-                                <h5 class="about_headings">Mission </h5>
-
-                                <p class="mt-0">{{$college->mission}} </p>
-
-
-
-
-
-                                <h5 class="about_headings mt-3">History </h5>
-                                <p class="mt-0">
-                                    {{$college->history}} </p>
-
-
-                                <h5 class="about_headings mt-3">Highlights </h5>
-                                <p class="mt-0">
-                                    {{$college->highlight}} </p>
-
-
-                            </div>
-
-
-
-                            
-
-
-                        </div> <!-- about -->
-
-@else
-            <div class="col-md-12">
-                <div class="text-center text-danger"><h3>Invalid Input</h3></div>
-            </div>
-        @endif
-                        <!-- Fees -->
-
+                        
                         <style>
 
                             .card {
@@ -1580,134 +1514,40 @@ margin-top:-27px;
 
 </style>
 
-                        <div class="detailsInfoBox">
+<div class="detailsInfoBox">
 
-                            <div class="row mt-2">
+ <div class="row mt-2">
+  <div class="col-lg-12 pl-0 pr-0">
+  <div id="accordion" style="background-color:white;">
+  <div class="col-sm-12">
+ <div class="row">
 
-
-                                <div class="col-lg-12 pl-0 pr-0">
-                                    <div id="accordion" style="background-color:white;">
-                                        <!-- COURSES -->
-
-                                        <!-- courses box new -->
-
-
-                                        <div class="col-sm-12">
-
-                                            <div class="row">
-
-                                                <div class="col-sm-12">
-                                                    <h5 class="mt-0"> Courses Offered </h5>
-
-
-
-                                                    <div class="accordion-group border">
-                                                        <div class="accordion-heading">
-                                                            <a class="accordion-toggle" data-toggle="collapse" href="#collapse1">
-
-                                                                B.Tech <i class="fa fa-minus float-right mt-1"></i>
-
-                                                            </a>
-                                                        </div>
-                                                        <div id="collapse1" class="accordion-body collapse in show" data-parent="#accordion">
-                                                            <div class="accordion-inner">
-
-
-                                                                <table class="table table-responsive-sm table-responsive-md">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col"># </th>
-                                                                            <th scope="col">Course </th>
-                                                                            <th scope="col">Fees </th>
-                                                                            <th scope="col">Duration </th>
-                                                                            <th scope="col">Type </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-
-
-                                                                        <tr>
-                                                                            <th scope="row">1 </th>
-                                                                            <td>Bachelor of Technology [B.Tech] </td>
-                                                                            <td>₹ 71300/yr </td>
-                                                                            <td>4 Years </td>
-                                                                            <td>Full Time </td>
-                                                                        </tr>
+                                               
+<div class="mt-3">
+<table class="table table-bordered">
+<thead>
+  <tr class="bg-light">
+<th class="p-3">Course</th>
+<th class="p-3">Admission Procedure</th>
+         </tr>
+</thead>
+<tbody>
+<tr>
+    <td>Bachelor of Technology [B.Tech] (Information Technology)</td>
+    <td>
+  <ul>
+       <a href="">TNEA</a>
+    </ul>
+</td>
+  </tr>
 
 
 
 
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-
-
-
-
-
-
-
-
-
-                                                    <div class="accordion-group border">
-                                                        <div class="accordion-heading">
-                                                            <a class="accordion-toggle" data-toggle="collapse" href="#collapse42">
-
-                                                                Diploma <i class="fa fa-plus float-right mt-1"></i>
-
-                                                            </a>
-                                                        </div>
-                                                        <div id="collapse42" class="accordion-body collapse in collapse" data-parent="#accordion">
-                                                            <div class="accordion-inner">
-
-
-                                                                <table class="table table-responsive-sm table-responsive-md">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col"># </th>
-                                                                            <th scope="col">Course </th>
-                                                                            <th scope="col">Fees </th>
-                                                                            <th scope="col">Duration </th>
-                                                                            <th scope="col">Type </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-
-
-                                                                        <tr>
-                                                                            <th scope="row">1 </th>
-                                                                            <td>Diploma </td>
-                                                                            <td>₹ 50000/yr </td>
-                                                                            <td>3 Years </td>
-                                                                            <td>Full Time </td>
-                                                                        </tr>
-
-
-
-
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-
-
-
-
-
-
-
-
-
-                                                </div>
+  </tbody>
+</table>
+</div>
+<!-- Admission Procedure End -->
 
                                             </div>
                                         </div>
@@ -2282,42 +2122,7 @@ button.flickity-button:hover {
                         <!-- Registration Open -->
 
 
-                        <div class="listSidebar" style="margin-top:10px;">
-@if ($college)
-                            <div class="contactInfo">
-                                <ul class="list-unstyled list-address">
-                                    <li>
-
-
-                                        <i class="fas fa-map-marker-alt text-primary"></i>  
-                                        {{$college->address}}
-
-                                    </li>
-
-
-                                    <li>
-                                        <i class="fas fa-phone text-primary" aria-hidden="true"></i>
-                                        {{$college->contact}}
-                                    </li>
-
-
-                                    <li>
-                                        <i class="fas fa-link text-primary" aria-hidden="true"></i>
-                                        <a href="" rel="nofollow" style="text-decoration: none">{{$college->url}}</a>
-
-                                    </li>
-                                    <li>
-
-
-                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
-                                        <a href="mailto:info@acecollegeagra.com" rel="nofollow" style="text-decoration: none">{{$college->email}} </a>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-                             @endif
-                        </div>
+                  
 
 
                       

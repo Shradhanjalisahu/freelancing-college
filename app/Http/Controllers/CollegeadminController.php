@@ -11,6 +11,7 @@ use App\Models\State;
 use App\Models\City;
 use App\Models\Univercity;
 use App\Models\Branch;
+use App\Models\Course;
 use App\Imports\ImportCollege;
 use App\Exports\ExportCollege;
 use Excel;
@@ -345,5 +346,43 @@ class CollegeadminController extends Controller
             //throw $th;
             return $e;
         }
+    }
+
+
+     public function addCourse(Request $request)
+    {
+        
+        return view('addCourse');
+    }
+
+    public function newCoursesfees(Request $request)
+    {
+        
+        return view('newCoursesfees');
+    }
+
+
+     public function saveCourses(Request $request)
+       {
+
+        $this->validate($request,[
+            'courseName' => 'required|max:255',
+            'course_details' => 'required',
+            
+        ]);
+
+        $courses = new Course;
+        $courses->courseName = $request->courseName;
+        $courses->course_details = $request->course_details;
+
+        $courses->save();
+        return redirect('addcourses')->with('success','Course added successfully');
+        
+      }
+
+    public function admissionProcess(Request $request)
+    {
+        
+        return view('admission-process');
     }
 }
