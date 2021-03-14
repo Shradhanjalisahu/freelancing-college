@@ -1005,14 +1005,10 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                     <a class="text-body" href="#" property="item" typeof="WebPage">
                                         <span property="name"><a href="/">Home</a></span> / 
                                         <span>
-                                            @if ($college) 
-                                                <a href="/index/list/{{strtolower($college['state_name'])}}">{{$college['state_name']}}</a> 
-                                            @endif
+                                           
                                         </span> / 
                                         <span>
-                                            @if ($college) 
-                                                <a href="/index/list/{{strtolower($college['state_name'])}}/{{strtolower($college['city_name'])}}">{{$college['city_name']}}</a>
-                                            @endif
+                                           
                                         </span>
                                     </a>
                                     <meta property="position" content="1" />
@@ -1022,15 +1018,7 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
-                                <h1 class="mt-3" style="font-size: 1rem;"> @if ($college)  {{strtoupper($college->collegeName)}}   @endif,
-                                            @if ($college) 
-                                               {{strtoupper($college['state_name'])}}
-                                            @endif,
-                                        
-                                       
-                                            @if ($college) 
-                                                {{strtoupper($college['city_name'])}}
-                                            @endif
+                                <h1 class="mt-3" style="font-size: 1rem;"> 
                                        
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i></span>
               
@@ -1410,33 +1398,19 @@ return false;
                                 <a class="nav-link text-primary" href="/ace-college-of-engineering--management-agra">About </a>
                             </div>
 
-
+                            <div class="carousel-cell">
+                                <a class="nav-link text-dark" href="/ace-college-of-engineering--management-agra/admission-process" name="admission">Admission Process </a>
+                            </div>
 
                             <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="/ace-college-of-engineering--management-agra/scholarships" name="admission">Scholarship </a>
+                                <a class="nav-link  text-dark" href="/ace-college-of-engineering--management-agra/course-fees" name="course-and-fee">Courses & Fee </a>
                             </div>
 
 
 
-
-                            <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="{{url('admissionprocess')}}" name="admission">Admission Process </a>
-                            </div>
-
-                            <div class="carousel-cell">
-                                <a class="nav-link  text-dark" href="{{url('newcoursesfees')}}" name="course-and-fee">Courses & Fee </a>
-                            </div>
 
 
                            
-
-
-
-
-
-
-
-
 
                         </div>
 
@@ -1458,47 +1432,7 @@ return false;
                 <div class="row">
                    
                     <div class="col-lg-8 col-md-8 col-xs-12">
-                         @if ($college)
-
-                        <div class="listDetailsInfo">
-                              
-
-                            <div class="detailsInfoBox">
-                                <!-- <h5 class="pl-0">About This College</h5> -->
-                                <h5 class="about_headings">Mission </h5>
-
-                                <p class="mt-0">{{$college->mission}} </p>
-
-
-
-
-
-                                <h5 class="about_headings mt-3">History </h5>
-                                <p class="mt-0">
-                                    {{$college->history}} </p>
-
-
-                                <h5 class="about_headings mt-3">Highlights </h5>
-                                <p class="mt-0">
-                                    {{$college->highlight}} </p>
-
-
-                            </div>
-
-
-
-                            
-
-
-                        </div> <!-- about -->
-
-@else
-            <div class="col-md-12">
-                <div class="text-center text-danger"><h3>Invalid Input</h3></div>
-            </div>
-        @endif
-                        <!-- Fees -->
-
+                        
                         <style>
 
                             .card {
@@ -2282,42 +2216,7 @@ button.flickity-button:hover {
                         <!-- Registration Open -->
 
 
-                        <div class="listSidebar" style="margin-top:10px;">
-@if ($college)
-                            <div class="contactInfo">
-                                <ul class="list-unstyled list-address">
-                                    <li>
-
-
-                                        <i class="fas fa-map-marker-alt text-primary"></i>  
-                                        {{$college->address}}
-
-                                    </li>
-
-
-                                    <li>
-                                        <i class="fas fa-phone text-primary" aria-hidden="true"></i>
-                                        {{$college->contact}}
-                                    </li>
-
-
-                                    <li>
-                                        <i class="fas fa-link text-primary" aria-hidden="true"></i>
-                                        <a href="" rel="nofollow" style="text-decoration: none">{{$college->url}}</a>
-
-                                    </li>
-                                    <li>
-
-
-                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
-                                        <a href="mailto:info@acecollegeagra.com" rel="nofollow" style="text-decoration: none">{{$college->email}} </a>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-                             @endif
-                        </div>
+                  
 
 
                       

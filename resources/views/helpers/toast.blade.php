@@ -1,13 +1,13 @@
 <style>
     .custom-body{
-        padding: 7px 0px 0px 33px;
+        padding: 7px 0px 0px 3px;
     }
     #toast-title{
         color:white;
     }
 </style>
 <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" 
-style="position: relative; min-height: 200px;">
+style="position: relative; min-height:100px;">
   <!-- Then put toasts within -->
   <div class="toast" style="position: absolute; top: 0; right: 0;">
     <div class="toast-header" id="toast-header">

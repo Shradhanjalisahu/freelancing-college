@@ -28,10 +28,13 @@ Route::get('/', [CollegeadminController::class, 'index']);
 Auth::routes();
 Route::get('/addbranch', [CollegeadminController::class, 'addBranch']);
 Route::get('/addstate', [CollegeadminController::class, 'addState']);
+Route::get('/addcourses', [CollegeadminController::class, 'addCourse']);
 Route::get('/newcollege', [CollegeadminController::class, 'newCollege']);
+Route::get('/newcoursesfees', [CollegeadminController::class, 'newCoursesfees']);
+Route::get('/admissionprocess', [CollegeadminController::class, 'admissionProcess']);
+
+
 Route::get('/importfile', [CollegeadminController::class, 'importCSVfile']);
-
-
 Route::post('/upload/college', [CollegeadminController::class, 'import'])->name('import-file');
 Route::get('/download/college', [CollegeadminController::class, 'exportCollege'])->name('export-college-details');
 
@@ -41,6 +44,7 @@ Route::get('/home', [CollegeadminController::class, 'homePage']);
 Route::post('/savenewcollege', [CollegeadminController::class, 'saveCollege'])->name('add-college');
 Route::post('/savenewbranch', [CollegeadminController::class, 'saveBranch'])->name('add-branch');
 Route::post('/savenewstate', [CollegeadminController::class, 'saveState'])->name('add-state');
+Route::post('/savenewcourse', [CollegeadminController::class, 'saveCourses'])->name('add-course');
 Route::get('/collegedetail/{collegeurl}/', [CollegeadminController::class, 'detail']);
 
 
@@ -50,8 +54,6 @@ Route::get('/index/list/{state}', [CollegeadminController::class, 'view']);
 Route::get('/index/list/{state}/{city}/', [CollegeadminController::class, 'view']);
 Route::get('/index/{branch_name}', [CollegeadminController::class, 'view']);
 
-Route::post('get-city-by-state', [CollegeadminController::class, 'getCity']);
-Route::post('get-univercity-by-city', [CollegeadminController::class, 'getUnivercity']);
 
 
 
