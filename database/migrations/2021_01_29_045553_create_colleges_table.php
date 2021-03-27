@@ -23,7 +23,7 @@ class CreateCollegesTable extends Migration
             
            // $table->string('image');
             $table->string('location');
-            $table->string('course');
+            $table->string('course_id');
             $table->string('email');
             $table->string('address');
             $table->string('facilites');

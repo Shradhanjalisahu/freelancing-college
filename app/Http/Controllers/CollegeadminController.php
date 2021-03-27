@@ -115,7 +115,7 @@ class CollegeadminController extends Controller
                     
                     
                 }else{
-                    // if the enpoint not containes list keyword in url then that means the query is for branch
+                    // if the endpoint not containes list keyword in url then that means the query is for branch
                     $branch_name = $uri_segments[2];
                     $branch = Branch::where('branch_name', $uri_segments[2])
                         ->get(["branch_name","id"]);
@@ -138,19 +138,19 @@ class CollegeadminController extends Controller
 
 
      public function getCity(Request $request)
-    {
-        $data['cities'] = City::where("state_id",$request->state_id)
+       {
+          $data['cities'] = City::where("state_id",$request->state_id)
                     ->get(["city_name","id"]);
-        return response()->json($data);
-    }
+           return response()->json($data);
+       }
 
 
     public function getUnivercity(Request $request)
-    {
-        $data['univercities'] = Univercity::where("city_id",$request->city_id)
+         {
+            $data['univercities'] = Univercity::where("city_id",$request->city_id)
                     ->get(["univercity_name","id"]);
-        return response()->json($data);
-    }
+            return response()->json($data);
+         }
 
 
 
@@ -166,7 +166,7 @@ class CollegeadminController extends Controller
             'state_id' => 'required',
             'city_id' => 'required',
             'branch_id' => 'required|integer',
-            'course' => 'required|max:255',
+            'course_id' => 'required|max:255',
             'email' => 'required|max:255',
             'address' => 'required|max:255',
             'facilites' => 'required|max:255',
@@ -186,7 +186,7 @@ class CollegeadminController extends Controller
         $college->email = $request->email;
         $college->address = $request->address;
         $college->facilites = $request->facilites;
-        $college->course = $request->course;
+        $college->course_id = $request->course_id;
         $college->mission = $request->mission;
         $college->highlight = $request->highlight;
         $college->history = $request->history;
@@ -258,6 +258,7 @@ class CollegeadminController extends Controller
 
 
     public function getCities(Request $request)
+    
     {
         $cities = City::whereIn('state_id',$request->state_id)->get();
         $hashed_type = $request->hashed_type;
@@ -299,7 +300,7 @@ class CollegeadminController extends Controller
             // $sql = $colleges->toSql();
             $colleges = $colleges->get();
             $total = $colleges->count();
-
+   
             $html = view('ajax.get_colleges',compact('colleges','total'))->render();
 
             return response()->json([
@@ -337,6 +338,8 @@ class CollegeadminController extends Controller
         }
     }
 
+
+
     function exportCollege(Request $request){
         try {
             //code...
@@ -355,10 +358,33 @@ class CollegeadminController extends Controller
         return view('addCourse');
     }
 
-    public function newCoursesfees(Request $request)
+
+
+    public function newCoursesfees($collegeurl)
     {
+        $data = [];
+        $college = Colleges::select('*')
+                    ->where('url', '=', $collegeurl)
+                    ->first();
+                  
+        $state = State::select('*')
+                ->where('id', $college['state_id'])
+                ->first();
         
-        return view('newCoursesfees');
+        
+        $city = City::select('*')
+                ->where('id', $college['city_id'])
+                ->first();
+
+         $course = Course::select('*')
+                ->where('id', $college['course_id'])
+                ->first();       
+
+        $data['college'] = $college;
+        $data['college']['state_name'] = $state['state_name'];
+        $data['college']['city_name'] = $city['city_name'];
+       // $data['college']['course_id'] = $course['course_id'];
+        return view('course-fees', $data);
     }
 
 
@@ -380,9 +406,86 @@ class CollegeadminController extends Controller
         
       }
 
-    public function admissionProcess(Request $request)
+
+
+    public function admissionProcess($collegeurl)
     {
+        $data = [];
+        $college = Colleges::select('*')
+                    ->where('url', '=', $collegeurl)
+                    ->first();
+                  
+        $state = State::select('*')
+                ->where('id', $college['state_id'])
+                ->first();
         
-        return view('admission-process');
+        
+        $city = City::select('*')
+                ->where('id', $college['city_id'])
+                ->first();
+
+         $course = Course::select('*')
+                ->where('id', $college['course_id'])
+                ->first();       
+
+        $data['college'] = $college;
+        $data['college']['state_name'] = $state['state_name'];
+        $data['college']['city_name'] = $city['city_name'];
+        return view('admission-process', $data);
+    }
+
+
+     public function facilitie($collegeurl)
+    {
+        $data = [];
+        $college = Colleges::select('*')
+                    ->where('url', '=', $collegeurl)
+                    ->first();
+                  
+        $state = State::select('*')
+                ->where('id', $college['state_id'])
+                ->first();
+        
+        
+        $city = City::select('*')
+                ->where('id', $college['city_id'])
+                ->first();
+
+         $course = Course::select('*')
+                ->where('id', $college['course_id'])
+                ->first();       
+
+        $data['college'] = $college;
+        $data['college']['state_name'] = $state['state_name'];
+        $data['college']['city_name'] = $city['city_name'];
+        return view('facilities', $data);
+    }
+
+
+
+    public function hostel($collegeurl)
+    {
+        $data = [];
+        $college = Colleges::select('*')
+                    ->where('url', '=', $collegeurl)
+                    ->first();
+                  
+        $state = State::select('*')
+                ->where('id', $college['state_id'])
+                ->first();
+        
+        
+        $city = City::select('*')
+                ->where('id', $college['city_id'])
+                ->first();
+
+         $course = Course::select('*')
+                ->where('id', $college['course_id'])
+                ->first();       
+
+        $data['college'] = $college;
+        $data['college']['state_name'] = $state['state_name'];
+        $data['college']['city_name'] = $city['city_name'];
+        return view('hosteles', $data);
     }
 }

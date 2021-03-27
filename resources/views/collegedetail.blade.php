@@ -199,7 +199,7 @@ margin: 0 .25rem;
 
 #sidebarCollapse:hover{
 /* background-color: #2296f3;
-color: #2296f3;
+color: #2296f3
 border: 1px solid #2296f3; */
 cursor:pointer;
 }
@@ -1407,24 +1407,27 @@ return false;
 
 
                             <div class="carousel-cell">
-                                <a class="nav-link text-primary" href="/ace-college-of-engineering--management-agra">About </a>
+                                <a class="nav-link text-primary" href="{{url('collegedetail/' . $college->url)}}">About </a>
                             </div>
 
 
 
-                            <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="/ace-college-of-engineering--management-agra/scholarships" name="admission">Scholarship </a>
-                            </div>
-
+                           
 
 
 
                             <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="{{url('admissionprocess')}}" name="admission">Admission Process </a>
+                                <a class="nav-link text-dark" href="{{url('collegedetail/' . $college->url.'/admission-process')}}" name="admission">Admission Process </a>
                             </div>
 
                             <div class="carousel-cell">
-                                <a class="nav-link  text-dark" href="{{url('newcoursesfees')}}" name="course-and-fee">Courses & Fee </a>
+                                <a class="nav-link  text-dark" href="{{url('collegedetail/' . $college->url.'/course-fees')}}" name="course-and-fee">Courses & Fee </a>
+                            </div>
+                            <div class="carousel-cell">
+                                <a class="nav-link  text-dark" href="{{url('collegedetail/' . $college->url.'/facilities')}}" name="course-and-fee">Facilities </a>
+                            </div>
+                            <div class="carousel-cell">
+                                <a class="nav-link  text-dark" href="{{url('collegedetail/' . $college->url.'/hosteles')}}" name="course-and-fee">Hostel </a>
                             </div>
 
 

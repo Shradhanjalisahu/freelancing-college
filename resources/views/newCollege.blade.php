@@ -98,8 +98,8 @@
 								</div>
 								<div class="form-group col-md-6 mb-6">
 									<label for="listingTitle">Course</label>
-									<input type="text"  name="course" class="form-control @error('course') is-invalid @enderror" placeholder="Enter courses"  value="{{old('course')}}" >
-									@error('course')
+									<input type="text"  name="course_id" class="form-control @error('course_id') is-invalid @enderror" placeholder="Enter courses"  value="{{old('course_id')}}" >
+									@error('course_id')
 										<div class="invalid-feedback">
 											{{$message}}
 									  	</div>
