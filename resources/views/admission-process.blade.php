@@ -1006,10 +1006,17 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                                         <span property="name"><a href="/">Home</a></span> / 
                                         <span>
                                            
+                                         @if ($college) 
+                                                <a href="/index/list/{{strtolower($college['state_name'])}}">{{$college['state_name']}}</a> 
+                                            @endif
                                         </span> / 
                                         <span>
+                                            @if ($college) 
+                                                <a href="/index/list/{{strtolower($college['state_name'])}}/{{strtolower($college['city_name'])}}">{{$college['city_name']}}</a>
+                                            @endif
                                            
-                                        </span>
+                                        </span>/
+                                        <span property="name"><a href="">Admission Process</a></span> 
                                     </a>
                                     <meta property="position" content="1" />
                                 </li>
@@ -1018,7 +1025,15 @@ window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
-                                <h1 class="mt-3" style="font-size: 1rem;"> 
+                                <h1 class="mt-3" style="font-size: 1rem;"> @if ($college)  {{strtoupper($college->collegeName)}}   @endif,
+                                            @if ($college) 
+                                               {{strtoupper($college['state_name'])}}
+                                            @endif,
+                                        
+                                       
+                                            @if ($college) 
+                                                {{strtoupper($college['city_name'])}}
+                                            @endif
                                        
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i></span>
               
@@ -1395,17 +1410,23 @@ return false;
 
 
                             <div class="carousel-cell">
-                                <a class="nav-link text-primary" href="/ace-college-of-engineering--management-agra">About </a>
+                                <a class="nav-link text-primary" href="{{url('collegedetail/' . $college->url)}}">About </a>
                             </div>
 
                             <div class="carousel-cell">
-                                <a class="nav-link text-dark" href="/ace-college-of-engineering--management-agra/admission-process" name="admission">Admission Process </a>
+                                <a class="nav-link text-dark" href="{{url('collegedetail/' . $college->url.'/admission-process')}}" name="admission">Admission Process </a>
                             </div>
 
                             <div class="carousel-cell">
-                                <a class="nav-link  text-dark" href="/ace-college-of-engineering--management-agra/course-fees" name="course-and-fee">Courses & Fee </a>
+                                <a class="nav-link  text-dark" href="{{url('collegedetail/' . $college->url.'/course-fees')}}" name="course-and-fee">Courses & Fee </a>
                             </div>
 
+                                <div class="carousel-cell">
+                                <a class="nav-link  text-dark" href="{{url('collegedetail/' . $college->url.'/facilities')}}" name="course-and-fee">Facilities </a>
+                            </div>
+                            <div class="carousel-cell">
+                                <a class="nav-link  text-dark" href="{{url('collegedetail/' . $college->url.'/hosteles')}}" name="course-and-fee">Hostel </a>
+                            </div>
 
 
 
@@ -2130,8 +2151,47 @@ button.flickity-button:hover {
                         <!-- SIDE BOX -->
 
 
+<div class="listSidebar" style="margin-top:10px;">
+@if ($college)
+                            <div class="contactInfo">
+                                <ul class="list-unstyled list-address">
+                                    <li>
 
 
+                                        <i class="fas fa-map-marker-alt text-primary"></i>  
+                                        {{$college->address}}
+
+                                    </li>
+
+
+                                    <li>
+                                        <i class="fas fa-phone text-primary" aria-hidden="true"></i>
+                                        {{$college->contact}}
+                                    </li>
+
+
+                                    <li>
+                                        <i class="fas fa-link text-primary" aria-hidden="true"></i>
+                                        <a href="" rel="nofollow" style="text-decoration: none">{{$college->url}}</a>
+
+                                    </li>
+                                    <li>
+
+
+                                        <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
+                                        <a href="mailto:info@acecollegeagra.com" rel="nofollow" style="text-decoration: none">{{$college->email}} </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                             @endif
+                        </div>
+
+
+                      
+
+                       
 
 
                         <!-- side box -->

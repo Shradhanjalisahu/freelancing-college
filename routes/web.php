@@ -46,6 +46,12 @@ Route::post('/savenewbranch', [CollegeadminController::class, 'saveBranch'])->na
 Route::post('/savenewstate', [CollegeadminController::class, 'saveState'])->name('add-state');
 Route::post('/savenewcourse', [CollegeadminController::class, 'saveCourses'])->name('add-course');
 Route::get('/collegedetail/{collegeurl}/', [CollegeadminController::class, 'detail']);
+Route::get('/collegedetail/{collegeurl}/admission-process', [CollegeadminController::class, 'admissionProcess']);
+Route::get('/collegedetail/{collegeurl}/course-fees', [CollegeadminController::class, 'newCoursesfees']);
+
+Route::get('/collegedetail/{collegeurl}/facilities', [CollegeadminController::class, 'facilitie']);
+
+Route::get('/collegedetail/{collegeurl}/hosteles', [CollegeadminController::class, 'hostel']);
 
 
 
