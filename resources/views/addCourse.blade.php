@@ -61,6 +61,20 @@
 							@csrf
 							<div class="row">
 								<div class="form-group col-md-6 mb-6">
+									<label for="listingTitle">College List</label>
+									<select name="college_id" id="college_id" class="form-control @error('college_id') is-invalid @enderror"  >
+										<option value="">Select College</option>
+										@foreach($collegesList as $college)
+											<option value="{{$college->id}}" {{old('college_id') != null && old('college_id') == $college->id ? 'selected' : '' }}>{{$college->collegeName}}</option>
+										@endforeach
+									</select>
+									@error('college_id')
+										<div class="invalid-feedback">
+											{{$message}}
+									  	</div>
+									@enderror
+								</div>
+								<div class="form-group col-md-6 mb-6">
 									<label for="listingTitle">Course Name</label>
 									<input type="text" name="courseName" value="{{old('courseName')}}" class="form-control @error('courseName') is-invalid @enderror" placeholder="Enter course name" >
 									@error('courseName')
