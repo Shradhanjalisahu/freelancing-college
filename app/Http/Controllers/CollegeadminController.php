@@ -12,6 +12,9 @@ use App\Models\City;
 use App\Models\Univercity;
 use App\Models\Branch;
 use App\Models\Course;
+use App\Models\Coursefees;
+use App\Models\Addmissionprocess;
+use App\Models\Coursemapping;
 use App\Imports\ImportCollege;
 use App\Exports\ExportCollege;
 use Excel;
@@ -40,8 +43,15 @@ class CollegeadminController extends Controller
     public function addState(Request $request)
     {
        
+        
+        return view('addState');
+    }
+
+    public function addCity(Request $request)
+    {
+       
         $states = State::orderBy('state_name')->get();
-        return view('addState',compact('states'));
+        return view('addCity',compact('states'));
     }
 
     public function newCollege(Request $request)
@@ -137,20 +147,6 @@ class CollegeadminController extends Controller
 
 
 
-     public function getCity(Request $request)
-       {
-          $data['cities'] = City::where("state_id",$request->state_id)
-                    ->get(["city_name","id"]);
-           return response()->json($data);
-       }
-
-
-    public function getUnivercity(Request $request)
-         {
-            $data['univercities'] = Univercity::where("city_id",$request->city_id)
-                    ->get(["univercity_name","id"]);
-            return response()->json($data);
-         }
 
 
 
@@ -166,7 +162,7 @@ class CollegeadminController extends Controller
             'state_id' => 'required',
             'city_id' => 'required',
             'branch_id' => 'required|integer',
-            'course_id' => 'required|max:255',
+            
             'email' => 'required|max:255',
             'address' => 'required|max:255',
             'facilites' => 'required|max:255',
@@ -186,7 +182,7 @@ class CollegeadminController extends Controller
         $college->email = $request->email;
         $college->address = $request->address;
         $college->facilites = $request->facilites;
-        $college->course_id = $request->course_id;
+        
         $college->mission = $request->mission;
         $college->highlight = $request->highlight;
         $college->history = $request->history;
@@ -221,11 +217,25 @@ class CollegeadminController extends Controller
     public function saveState(Request $request)
     {
 
-        $college = new Branch;
-        $branch->state_name = $request->state_name;
+        $college = new State;
+        $college->state_name = $request->state_name;
 
-        $branch->save();
+        $college->save();
         return redirect('/')->with('success','State added successfully');
+        
+
+    }
+
+
+    public function saveCities(Request $request)
+    {
+
+        $college = new City;
+        $college->city_name = $request->city_name;
+        $college->state_id = $request->state_id;
+
+        $college->save();
+        return redirect('/')->with('success','City added successfully');
         
 
     }
@@ -355,7 +365,8 @@ class CollegeadminController extends Controller
      public function addCourse(Request $request)
     {
         
-        return view('addCourse');
+        $collegesList = Colleges::orderBy('collegeName')->get();
+        return view('addCourse',compact('collegesList'));
     }
 
 
@@ -392,12 +403,14 @@ class CollegeadminController extends Controller
        {
 
         $this->validate($request,[
+            'college_id' => 'required|max:255',
             'courseName' => 'required|max:255',
             'course_details' => 'required',
             
         ]);
 
         $courses = new Course;
+        $courses->college_id = $request->college_id;
         $courses->courseName = $request->courseName;
         $courses->course_details = $request->course_details;
 
@@ -407,6 +420,94 @@ class CollegeadminController extends Controller
       }
 
 
+public function addCoursefees(Request $request)
+    {
+        $collegeList = Colleges::orderBy('collegeName')->get();
+        $courseList = Course::orderBy('courseName')->get();
+        return view('addcoursefees',compact('collegeList','courseList'));
+    }
+
+ public function saveCoursefees(Request $request)
+       {
+
+        $this->validate($request,[
+            'college_id' => 'required|max:255',
+            'course_id' => 'required|max:255',
+            'course_fees' => 'required|max:255',
+            'course_type' => 'required|max:255',
+            'course_duration' => 'required|max:255',
+        ]);
+
+        $courses = new Coursefees;
+        $courses->college_id = $request->college_id;
+        $courses->course_id = $request->course_id;
+        $courses->course_fees = $request->course_fees;
+        $courses->course_type = $request->course_type;
+         $courses->course_duration = $request->course_duration;
+
+        $courses->save();
+        return redirect('addcourses')->with('success','Coursefees added successfully');
+        
+      }
+  public function addCourseMapping(Request $request)
+    {
+        $collegeList = Colleges::orderBy('collegeName')->get();
+        $courseList = Course::orderBy('courseName')->get();
+        return view('addCourseMapping',compact('collegeList','courseList'));
+    }
+
+   public function saveCourseMapping(Request $request)
+       {
+
+        $this->validate($request,[
+            'college_id' => 'required|max:255',
+            'course_id' => 'required|max:255',
+            
+        ]);
+
+        $coursesmapping = new Coursemapping;
+        $coursesmapping->college_id = $request->college_id;
+        $coursesmapping->course_id = $request->course_id;
+
+        $coursesmapping->save();
+        return redirect('addcoursemapping')->with('success','CourseMapping added successfully');
+        
+      }
+
+      public function addAdmissionprocess(Request $request)
+    {
+        $collegeList = Colleges::orderBy('collegeName')->get();
+        $courseList = Course::orderBy('courseName')->get();
+        return view('addAdmissionProcess',compact('collegeList','courseList'));
+    }
+
+   public function saveAdmissionprocess(Request $request)
+       {
+
+        $this->validate($request,[
+            'college_id' => 'required|max:255',
+            'course_id' => 'required|max:255',
+            'admission_process' => 'required',
+            'admission_process_detail' => 'required',
+            'admission_process_link' => 'required',
+            'admission_process_link_text' => 'required',
+            'own_admission_process' => 'required|max:255',
+           
+        ]);
+
+        $admissionprocess= new Addmissionprocess;
+        $admissionprocess->college_id = $request->college_id;
+        $admissionprocess->course_id = $request->course_id;
+        $admissionprocess->admission_process = $request->admission_process;
+        $admissionprocess->admission_process_detail = $request->admission_process_detail;
+        $admissionprocess->admission_process_link = $request->admission_process_link;
+        $admissionprocess->admission_process_link_text = $request->admission_process_link_text;
+        $admissionprocess->own_admission_process = $request->own_admission_process;
+
+        $admissionprocess->save();
+        return redirect('addadmissionprocess')->with('success','CourseMapping added successfully');
+        
+      }
 
     public function admissionProcess($collegeurl)
     {
@@ -424,9 +525,7 @@ class CollegeadminController extends Controller
                 ->where('id', $college['city_id'])
                 ->first();
 
-         $course = Course::select('*')
-                ->where('id', $college['course_id'])
-                ->first();       
+           
 
         $data['college'] = $college;
         $data['college']['state_name'] = $state['state_name'];

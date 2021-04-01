@@ -19,11 +19,12 @@ class CreateCollegesTable extends Migration
             $table->string('contact');
             $table->string('url');
             $table->string('name');
-            $table->string('state');
-            
+            $table->string('city_id');
+            $table->string('state_id');
+            $table->string('branch_id');
            // $table->string('image');
             $table->string('location');
-            $table->string('course_id');
+           
             $table->string('email');
             $table->string('address');
             $table->string('facilites');
