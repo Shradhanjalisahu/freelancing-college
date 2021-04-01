@@ -45,9 +45,9 @@ Route::post('/savenewcollege', [CollegeadminController::class, 'saveCollege'])->
 Route::post('/savenewbranch', [CollegeadminController::class, 'saveBranch'])->name('add-branch');
 Route::post('/savenewstate', [CollegeadminController::class, 'saveState'])->name('add-state');
 Route::post('/savenewcourse', [CollegeadminController::class, 'saveCourses'])->name('add-course');
-Route::get('/collegedetail/{collegeurl}/', [CollegeadminController::class, 'detail']);
-Route::get('/collegedetail/{collegeurl}/admission-process', [CollegeadminController::class, 'admissionProcess']);
-Route::get('/collegedetail/{collegeurl}/course-fees', [CollegeadminController::class, 'newCoursesfees']);
+Route::get('/collegedetail/{collegeurl}/{tab_name?}', [CollegeadminController::class, 'detail']);
+// Route::get('/collegedetail/{collegeurl}/admission-process', [CollegeadminController::class, 'admissionProcess']);
+// Route::get('/collegedetail/{collegeurl}/course-fees', [CollegeadminController::class, 'newCoursesfees']);
 
 Route::get('/collegedetail/{collegeurl}/facilities', [CollegeadminController::class, 'facilitie']);
 
