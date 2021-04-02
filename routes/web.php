@@ -54,13 +54,7 @@ Route::post('/savenewcoursefes', [CollegeadminController::class, 'saveCoursefees
 Route::post('/savecoursemapping', [CollegeadminController::class, 'saveCourseMapping'])->name('add-coursemapping');
 Route::post('/saveadmissionprocess', [CollegeadminController::class, 'saveAdmissionprocess'])->name('add-admissionprocess');
 
-Route::get('/collegedetail/{collegeurl}/', [CollegeadminController::class, 'detail']);
-Route::get('/collegedetail/{collegeurl}/admission-process', [CollegeadminController::class, 'admissionProcess']);
-Route::get('/collegedetail/{collegeurl}/course-fees', [CollegeadminController::class, 'newCoursesfees']);
-
-Route::get('/collegedetail/{collegeurl}/facilities', [CollegeadminController::class, 'facilitie']);
-
-Route::get('/collegedetail/{collegeurl}/hosteles', [CollegeadminController::class, 'hostel']);
+Route::get('/collegedetail/{collegeurl}/{tab_name?}', [CollegeadminController::class, 'detail']);
 
 
 
