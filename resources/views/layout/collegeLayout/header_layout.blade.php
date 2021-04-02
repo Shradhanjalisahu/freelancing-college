@@ -104,8 +104,11 @@
                   <ul class="dropdown">
                     <li><a href="{{url('addbranch')}}">Add Branch</a></li>
                     <li><a href="{{url('addstate')}}">Add State</a></li>
-                    <li><a href="{{url('addstate')}}">Add State</a></li>
+                    <li><a href="{{url('addcity')}}">Add City</a></li>
                     <li><a href="{{url('addcourses')}}">Add Courses </a></li>
+                    <li><a href="{{url('addcoursefees')}}"> Courses Fees </a></li>
+                    <li><a href="{{url('addcoursemapping')}}"> Courses Mapping </a></li>
+                    <li><a href="{{url('addadmissionprocess')}}"> College Addmission Process </a></li>
                     
                   </ul>
                 </li>

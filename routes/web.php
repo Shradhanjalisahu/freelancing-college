@@ -28,10 +28,14 @@ Route::get('/', [CollegeadminController::class, 'index']);
 Auth::routes();
 Route::get('/addbranch', [CollegeadminController::class, 'addBranch']);
 Route::get('/addstate', [CollegeadminController::class, 'addState']);
+Route::get('/addcity', [CollegeadminController::class, 'addCity']);
 Route::get('/addcourses', [CollegeadminController::class, 'addCourse']);
+Route::get('/addcoursefees', [CollegeadminController::class, 'addCoursefees']);
+Route::get('/addcoursemapping', [CollegeadminController::class, 'addCourseMapping']);
+Route::get('/addadmissionprocess', [CollegeadminController::class, 'addAdmissionprocess']);
 Route::get('/newcollege', [CollegeadminController::class, 'newCollege']);
 Route::get('/newcoursesfees', [CollegeadminController::class, 'newCoursesfees']);
-Route::get('/admissionprocess', [CollegeadminController::class, 'admissionProcess']);
+
 
 
 Route::get('/importfile', [CollegeadminController::class, 'importCSVfile']);
@@ -44,14 +48,13 @@ Route::get('/home', [CollegeadminController::class, 'homePage']);
 Route::post('/savenewcollege', [CollegeadminController::class, 'saveCollege'])->name('add-college');
 Route::post('/savenewbranch', [CollegeadminController::class, 'saveBranch'])->name('add-branch');
 Route::post('/savenewstate', [CollegeadminController::class, 'saveState'])->name('add-state');
+Route::post('/savenewcity', [CollegeadminController::class, 'saveCities'])->name('add-city');
 Route::post('/savenewcourse', [CollegeadminController::class, 'saveCourses'])->name('add-course');
+Route::post('/savenewcoursefes', [CollegeadminController::class, 'saveCoursefees'])->name('add-coursefees');
+Route::post('/savecoursemapping', [CollegeadminController::class, 'saveCourseMapping'])->name('add-coursemapping');
+Route::post('/saveadmissionprocess', [CollegeadminController::class, 'saveAdmissionprocess'])->name('add-admissionprocess');
+
 Route::get('/collegedetail/{collegeurl}/{tab_name?}', [CollegeadminController::class, 'detail']);
-// Route::get('/collegedetail/{collegeurl}/admission-process', [CollegeadminController::class, 'admissionProcess']);
-// Route::get('/collegedetail/{collegeurl}/course-fees', [CollegeadminController::class, 'newCoursesfees']);
-
-Route::get('/collegedetail/{collegeurl}/facilities', [CollegeadminController::class, 'facilitie']);
-
-Route::get('/collegedetail/{collegeurl}/hosteles', [CollegeadminController::class, 'hostel']);
 
 
 
