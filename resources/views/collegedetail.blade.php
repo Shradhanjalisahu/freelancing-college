@@ -92,57 +92,6 @@
 
 
     <!-- HEAD CODE -->
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-18327399-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-18327399-1');
-    </script>
-
-
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
-
-    <!-- JSON LD -->
-    <script type='application/ld+json'>
-        {
-            "@context": "https://schema.org/",
-            "@type": "WebSite",
-            "name": "Aglasem",
-            "alternateName": "Aglasem Colleges Listing",
-            "url": "https://colleges.aglasem.com"
-        }
-    </script>
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://colleges.aglasem.com/",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://colleges.aglasem.com/find-redirect?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        }
-    </script>
-
-
-
     <!-- HEAD CODE -->
     <link href="/assets/css/dashboard.css" rel="stylesheet" />
 </head>
@@ -197,8 +146,8 @@
 
                 #sidebarCollapse:hover {
                     /* background-color: #2296f3;
-color: #2296f3
-border: 1px solid #2296f3; */
+                    color: #2296f3
+                    border: 1px solid #2296f3; */
                     cursor: pointer;
                 }
 
@@ -222,38 +171,36 @@ border: 1px solid #2296f3; */
                 }
             </style>
             <style>
-                /*
-DEMO STYLE
-*/
+            /* DEMO STYLE */
 
-                @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+            @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
-                .navbar {
-                    /* padding: 15px 10px; */
-                    background: #fff;
-                    border: none;
-                    border-radius: 0;
-                    /* margin-bottom: 1rem; */
-                    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-                }
+            .navbar {
+                /* padding: 15px 10px; */
+                background: #fff;
+                border: none;
+                border-radius: 0;
+                /* margin-bottom: 1rem; */
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            }
 
-                .navbar-btn {
-                    box-shadow: none;
-                    outline: none !important;
-                    border: none;
-                }
+            .navbar-btn {
+                box-shadow: none;
+                outline: none !important;
+                border: none;
+            }
 
-                .line {
-                    width: 100%;
-                    height: 1px;
-                    border-bottom: 1px dashed #ddd;
-                    margin: 40px 0;
-                }
+            .line {
+                width: 100%;
+                height: 1px;
+                border-bottom: 1px dashed #ddd;
+                margin: 40px 0;
+            }
 
-                /* ---------------------------------------------------
-SIDEBAR STYLE
------------------------------------------------------ */
+            /* ---------------------------------------------------
+            SIDEBAR STYLE
+            ----------------------------------------------------- */
 
                 #sidebar {
                     width: 250px;
@@ -354,12 +301,12 @@ SIDEBAR STYLE
                 }
 
                 /* .dropdown-item.active, .dropdown-item:active{
-        background:transparent;
-    }
+                    background:transparent;
+                }
 
-    .dropdown-item{
-        font-size: 13px;
-    } */
+                .dropdown-item{
+                    font-size: 13px;
+                } */
 
                 .dropdown-item-icon {
                     flex-shrink: 0;
@@ -371,9 +318,9 @@ SIDEBAR STYLE
                 }
 
                 /* .dropdown-list .dropdown-list-content {
-    max-height: 250px;
-    overflow: hidden;
-    } */
+                    max-height: 250px;
+                    overflow: hidden;
+                } */
 
                 .dropdown-list .dropdown-item {
                     padding: 15px 15px;
@@ -428,28 +375,12 @@ SIDEBAR STYLE
 
             <nav class="navbar navbar-expand-lg navbar-light py-1 px-1">
                 <div class="container-fluid px-0">
-
                     <a id="sidebarCollapse" class="mr-2 p-1 text-body">
-
                         <span><i class="fas fa-bars mt-1"></i></span>
-
                     </a>
-
-
                     <!--In Desktop View remove .com from aglasem.com-->
-
-
-
-
-
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
                         <ul class="nav navbar-nav ml-auto" style="font-size: 0.8rem;">
-
-
-
-
                             <!-- top organisation dropdown -->
                             <li class="nav-item my-auto px-1 dropdown megamenu"><a id="megamneu" href=""
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -457,8 +388,6 @@ SIDEBAR STYLE
                                 <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
                                     <div class="container">
                                         <div class="row bg-white rounded-0 m-0 shadow-sm p-2">
-
-
                                             <div class="col-3 text-center">
                                                 <h6 class="font-weight-bold text-uppercase" style="margin-top:1rem;">
                                                     agricultural </h6>
@@ -475,7 +404,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/agricet"
                                                             class="nav-link text-small pb-0 ">AGRICET </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -495,7 +423,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/nmat" class="nav-link text-small pb-0 ">NMAT
                                                         </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -515,7 +442,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/jee-advanced"
                                                             class="nav-link text-small pb-0 ">JEE Advanced </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -575,7 +501,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/ruhs-pharma"
                                                             class="nav-link text-small pb-0 ">RUHS Pharma </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -587,7 +512,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/dujat" class="nav-link text-small pb-0 ">DUET
                                                         </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -607,7 +531,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/ailetug"
                                                             class="nav-link text-small pb-0 ">AILET UG </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -627,7 +550,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/uceed" class="nav-link text-small pb-0 ">UCEED
                                                         </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -647,7 +569,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/jmee" class="nav-link text-small pb-0 ">Assam
                                                             JMEE </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -663,7 +584,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/nest" class="nav-link text-small pb-0 ">NEST
                                                         </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -683,7 +603,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/icmai" class="nav-link text-small pb-0 ">ICMAI
                                                             CA exam </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -703,7 +622,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/ftii-admission"
                                                             class="nav-link text-small pb-0 ">FTII Admission </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -723,7 +641,6 @@ SIDEBAR STYLE
                                                         style="font-size:.8rem;margin:.15rem;padding:.25rem;"><a
                                                             href="/exams/ilbs" class="nav-link text-small pb-0 ">ILBS
                                                         </a></li>
-
                                                 </ul>
                                             </div>
 
@@ -895,8 +812,8 @@ SIDEBAR STYLE
                                     href="https://mocktest.aglasem.com/" rel="nofollow">Mock Test </a>
                             </li>
                             <!-- <li class="nav-item">
-<a class="nav-link" data-toggle="tooltip"  title="Updates related to Education" href="https://news.aglasem.com/">News</a>
-</li> -->
+                                <a class="nav-link" data-toggle="tooltip"  title="Updates related to Education" href="https://news.aglasem.com/">News</a>
+                            </li> -->
 
 
                             <li class="nav-item pl-1 dropdown">
@@ -938,15 +855,10 @@ SIDEBAR STYLE
                 }
             </script>
 
-
-
-
             <!-- Scrollbar Custom CSS -->
-            <link rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-            <script
-                src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
             <script type="text/javascript">
                 $(document).ready(function () {
@@ -965,36 +877,11 @@ SIDEBAR STYLE
                         $('.collapse.in').toggleClass('in');
                         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                     });
-
                     $('#mCSB_1').addClass('sidebar-background');
-
                 });
-            </script>
-
-
-
-
-            <!-- Google Tag Manager (noscript) -->
-            <noscript><iframe class="invisible d-none" src="https://www.googletagmanager.com/ns.html?id=GTM-NBHCCGN"
-                    height="0" width="0"></iframe></noscript>
-            <!-- End Google Tag Manager (noscript) -->
-
-
-
-            <script type="text/javascript">
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-            </script>
-
-            <script>
                 $(".rotate").click(function () {
                     $(this).toggleClass("down");
                 })
-            </script>
-            <script>
                 function globalLogout() {
 
                     // Get the page name where user logout
@@ -1013,10 +900,9 @@ SIDEBAR STYLE
 
                     },
 
-                        function () {
-                            window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
-                        });
-
+                    function () {
+                        window.location = "/global/user-session-out?url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
+                    });
                 }
 
             </script>
@@ -1025,12 +911,8 @@ SIDEBAR STYLE
                 async=""></script>
             <link rel="stylesheet"
                 href="https://cdn.aglasem.com/mocktest/assets/js/library/sweetalert/dist/sweetalert.css" />
-
             <!-- NEW CODE -->
         </header>
-
-
-
         <style>
             /* navpills */
 
@@ -1068,9 +950,9 @@ SIDEBAR STYLE
             }
 
             /*.project-tab .nav-link:hover {
-    border: none;
-}
-*/
+                border: none;
+            }
+            */
             .project-tab thead {
                 background: #f3f3f3;
                 color: #333;
@@ -1171,19 +1053,14 @@ SIDEBAR STYLE
                                     <div class="modal-body p-0 bg-light" style="height: 340px;  touch-action: pan-x;">
                                         <div class="gallery js-flickity"
                                             data-flickity='{ "imagesLoaded": true, "percentPosition": false, "pageDots": false }'>
-
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
-
                     </section>
 
                     <script>
-
                         $('#myModal').on('shown.bs.modal', function (event) {
                             $('.gallery').flickity('resize');
                         });
@@ -1223,7 +1100,6 @@ SIDEBAR STYLE
                                     <meta property="position" content="1" />
                                 </li>
                             </ol>
-
                         </div>
                         <div class="listingTitleArea">
                             <div class="d-flex">
@@ -1232,16 +1108,12 @@ SIDEBAR STYLE
                                     @if ($college)
                                     {{strtoupper($college['state_name'])}}
                                     @endif,
-
-
                                     @if ($college)
                                     {{strtoupper($college['city_name'])}}
                                     @endif
-
                                     <span id="addToFav" onclick="addFav(this,'college')" data-fav="add"><i
                                             class="far fa-heart  ml-2 cursor-pointer"
                                             title="Add to favourite"></i></span>
-
                                 </h1>
                                 <!-- <i class="far fa-heart my-auto pt-2 ml-2 cursor-pointer" title="Add to favourite"></i> -->
                             </div>
@@ -1302,8 +1174,8 @@ SIDEBAR STYLE
                                     review </a>
 
                                 <!-- <button type="button" class="btn btn-primary px-2 py-1 font-weight-normal ml-2 mt-md-0 mt-2" data-toggle="modal" data-target="#form">
-            claim this college
-  </button>  -->
+                                            claim this college
+                                </button>  -->
 
                                 <!-- download pdf session -->
 
@@ -1324,7 +1196,6 @@ SIDEBAR STYLE
         <div class="modal" id="claimModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <!-- Modal Header -->
                     <div class="modal-header ">
                         <h5 class="modal-title"> Claim This College </h5>
@@ -1362,8 +1233,6 @@ SIDEBAR STYLE
                             </div>
                         </div>
                     </form>
-
-
                 </div>
             </div>
         </div>
@@ -1380,7 +1249,7 @@ SIDEBAR STYLE
                 $('.video-btn').click(function () {
                     $videoSrc = $(this).data("src");
                 });
-                console.log($videoSrc);
+                
 
                 // when the modal is opened autoplay it  
                 $('#videoModal').on('shown.bs.modal', function (e) {
@@ -1397,211 +1266,9 @@ SIDEBAR STYLE
                 // document ready  
             });
 
-            function addFav(node, type) {
-
-
-                window.location = "https://auth.aglasem.com/login?action=login&url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
-
-
-
-                //$(node).addClass('disabled');
-
-                var fav = $(node).data('fav');
-
-
-                college_id = '7113';
-
-                $.ajax({
-                    url: "/interest/store",
-                    method: "post",
-                    data: {
-                        college_id: college_id,
-                        rating_type: 'add_to_fav',
-                        fav: fav
-
-                    },
-                    success: function (data) {
-                        dataArray = JSON.parse(data);
-                        console.log(dataArray);
-                        if (dataArray['status'] == 'success') {
-
-                            if (fav == 'add') {
-                                $(node).data('fav', 'remove');
-                                $(node).html('<i class="fas fa-heart text-danger ml-2 cursor-pointer" title="Add to favourite"></i>');
-                            }
-                            else {
-                                $(node).data('fav', 'add');
-
-                                if (type == 'university') {
-                                    $(node).html('<i class="far fa-heart text-white ml-2 cursor-pointer" title="Add to favourite"></i>');
-                                }
-                                else {
-                                    $(node).html('<i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i>');
-                                }
-
-
-                            }
-                        }
-
-                    },
-                    error: function (xhr) {
-                        console.log('error', xhr);
-
-                        $(node).removeClass('disabled');
-                    }
-
-                });
-
-
-
-            }
         </script>
-
-
-
         <script src="/assets/listing/library/lazy/lazysizes.min.js"></script>
-        <script>
-            var college_id = 7113
-            // console.log(college_id);
 
-            $("#counter").on("click", function (e) {
-
-                window.location.href = "https://auth.aglasem.com/login?action=login&url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
-                return false;
-
-                $.ajax({
-                    type: 'POST',
-                    cache: false,
-                    url: '/record-clicks',
-                    headers: {
-                        'X-CSRF-TOKEN': 'wfukN1165Q2UQ2NReiwCNyqE0c6zMu7aj6I9FqUN'
-                    },
-
-                    data: {
-                        college_id: college_id,
-
-                    },
-                    success: function (response) {
-                        responseArr = JSON.parse(response);
-                        window.location.href = "";
-                        console.log("hello");
-                    }
-                });
-
-            });
-
-        </script>
-
-
-
-        <script>
-            function downloadBooklet() {
-
-                var college_id = 7113;
-
-                swal({
-                    title: "Do you want to download booklet?",
-                    // text: "Are you sure to proceed?",
-                    type: "warning",
-                    showCancelButton: true,
-                    customClass: 'sweetalert-lg',
-                    // confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Yes!",
-                    cancelButtonText: "No!",
-                    cancelButtonClass: " btn btn-outline-light text-danger p-3",
-                    confirmButtonClass: " btn btn-primary p-3",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                },
-                    function (isConfirm) {
-                        if (isConfirm) {
-
-
-                            window.location.href = "https://auth.aglasem.com/login?action=login&url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
-                            return false;
-
-                            $.ajax({
-                                type: 'POST',
-                                cache: false,
-                                url: '/brochers-download',
-                                data: {
-                                    college_id: college_id,
-                                    brocher: ''
-
-                                },
-                                success: function (response) {
-                                    responseArr = JSON.parse(response);
-                                    window.location.href = "https://aglasem-cdn.s3.ap-south-1.amazonaws.com/college/brochure/";
-
-                                }
-                            });
-                            swal("Thanks!", "Downloaded", "success");
-
-                        } else {
-
-                            swal({
-                                title: "Okay!",
-
-                                confirmButtonClass: "confirm btn btn-primary p-2"
-                            });
-
-                        }
-                    });
-            }
-
-
-
-            function submitClaim() {
-
-
-                claimFormData = $("#claimForm").serializeArray();
-
-                url = '/claim-college';
-
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: claimFormData,
-
-                    success: function (response) {
-                        responseArr = JSON.parse(response);
-                        // $('#claimForm').reset();
-
-                        // successful request; do something with the data
-
-                        if (responseArr.status == 'success') {
-                            $("#claimForm")[0].reset();
-
-                            $('#claimModal').modal('hide');
-
-                            swal({
-                                title: "Thanks !",
-                                text: "Your data safe with us!",
-                                type: "success",
-                                confirmButtonClass: " btn btn-primary p-3",
-                                confirmButtonText: "OK",
-                                closeOnConfirm: false
-                            });
-
-                        }
-                        else {
-                            // $('#claimModal').modal('hide');
-                            // swal("Thanks!", "Your data safe with us!", "success");
-                        }
-
-                    },
-                    error: function () {
-                        // failed request; give feedback to user
-                        //   $('#ajax-panel').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
-
-
-                    }
-                });
-
-                return false;
-
-            }
-        </script>
         <!-- LISTINGS DETAILS IMAGE SECTION -->
         <!-- sub navigation -->
         <section class="py-md-3 py-0" id="tabs">
@@ -1851,335 +1518,10 @@ SIDEBAR STYLE
                         <!-- RATING ENW -->
 
                         <!-- Latest compiled and minified CSS -->
-                        <link rel="stylesheet"
-                            href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" />
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" />
                         <!-- Latest compiled and minified JavaScript -->
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-                        <script>
-                            $(function () {
-
-                                // initialize the autosize plugin on the review text area
-                                //$('#new-review').autosize({append: "\n"});
-
-                                var openReviewBtnTop = $('#open-review-box-top');
-
-
-                                openReviewBtnTop.click(function (e) {
-                                    // slide down to review box
-
-                                    $([document.documentElement, document.body]).animate({
-                                        scrollTop: $("#ratingFormDiv").offset().top
-                                    }, 2000);
-
-
-                                });
-
-
-
-                                $("#customer_rating").rateYo({
-                                    rating: 0,
-                                    fullStar: true,
-                                    numStars: 5,
-                                    onChange: function (rating, rateYoInstance) {
-
-                                        // $(this).next().text(rating);
-                                    },
-
-                                });
-
-                                // console.log('hello');
-                                ratingLoad();
-
-
-                            });
-
-
-
-
-                            if (localStorage.getItem("commentFirst")) {
-
-
-                                setTimeout(function () {
-                                    ratingSubmit();
-                                }, 5000);
-
-                            }
-
-
-
-                            function ratingSubmit() {
-                                console.log("function ratingSubmit working");
-                                //$('#rating-submit').addClass('disabled');
-
-
-
-                                customer_rating = $('#customer_rating').rateYo("option", "rating");
-
-
-                                if (customer_rating == '') {
-                                    console.log('rating is blank');
-                                    return false;
-
-                                }
-
-                                customer_rating_title = $('#customer_rating_title').val();
-                                customer_rating_description = $('#customer_rating_description').val();
-
-                                var commentObject = {
-                                    customer_rating: customer_rating,
-                                    customer_rating_title: customer_rating_title,
-                                    customer_rating_description: customer_rating_description
-                                };
-                                //console.log(commentObject['customer_rating']);
-                                if (localStorage) {
-
-                                    localStorage.setItem('commentFirst', JSON.stringify(commentObject));
-
-                                }
-
-                                window.location = "https://auth.aglasem.com/login?action=login&url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
-                                // return false;
-
-
-
-
-
-                                college_id = '7113';
-
-
-                                if (customer_rating == '') {
-                                    console.log('rating is blank');
-                                    return false;
-
-                                }
-
-
-
-
-                                $.ajax({
-                                    url: "/rating/store",
-                                    method: "post",
-                                    data: {
-                                        college_id: college_id,
-                                        rating_type: 'college',
-                                        user_id: "",
-                                        customer_rating: customer_rating,
-                                        customer_rating_title: customer_rating_title,
-                                        customer_rating_description: customer_rating_description
-                                    },
-                                    success: function (data) {
-
-
-                                        dataArray = JSON.parse(data);
-                                        console.log('hello');
-                                        console.log(dataArray);
-
-                                        if (dataArray['status'] == 'success') {
-
-                                            console.log(dataArray);
-                                            $('#close-review-box').click();
-                                            $('#customer_rating_title').val("");
-                                            $('#customer_rating_description').val("");
-                                            $('#customer_rating').rateYo("option", "rating", 0);
-                                            $('#reviewUpdate').html('<span class="text-success">Successfully Updated</span>');
-                                            ratingLoad();
-
-                                        } else {
-                                            //  $('#reviewUpdate').html('<span class="text-danger">Error Occured</span>');
-
-                                        }
-                                        $('#rating-submit').removeClass('disabled');
-                                        console.log(dataArray);
-
-
-
-                                    },
-                                    error: function (xhr) {
-                                        console.log('error', xhr);
-
-                                        $('#rating-submit').removeClass('disabled');
-                                    }
-
-                                });
-
-
-                                return false;
-
-                            }
-
-
-
-
-                            function ratingLoad() {
-
-                                // show loader in div
-
-
-                                college_id = '7113';
-
-                                $.ajax({
-                                    url: "/rating/fetch",
-                                    method: "post",
-                                    data: {
-                                        college_id: college_id,
-                                        rating_type: 'college'
-
-                                    },
-                                    success: function (data) {
-                                        dataArray = JSON.parse(data);
-                                        console.log(dataArray);
-                                        if (dataArray['status'] == 'success') {
-
-
-                                            $('#ratingDetails').html(dataArray['data']['reviewHtml']);
-
-                                            $('#totalReview').html(dataArray['data']['total_review']);
-
-                                            $('#totalReviewBottom').html('Review (' + dataArray['data']['total_review'] + ')');
-
-                                            $('#topAvgRating').html(dataArray['data']['avg_rating_html']);
-
-                                            $("#review_id").removeClass("d-none");
-
-                                            // $('#ratingDiv').html(dataArray['data']['reviewHtml']);
-                                            // 
-                                            // $('#avg_rating').html(dataArray['data']['avg_rating']);
-                                            // $('#avg_rating_top').html(dataArray['data']['avg_rating']);
-
-                                            // $('#totalReview_top').html(dataArray['data']['total_review']);
-
-                                        } else {
-
-                                            $("#review_id").addClass("d-none");
-                                        }
-
-                                        if (dataArray['status'] == 'error') {
-
-                                            //  $('#totalReview').html(dataArray['data']['total_review']);
-                                            //  $('#ratingDiv').html('<span id="not_rating">No rating yet , be the first to rate this college.</span>');
-                                            //   $('#showReview').css("display", "none");
-                                            $('#showReview').addClass("d-none");
-                                            $('#topAvgRating').addClass("d-none");
-
-
-                                        }
-                                        console.log(dataArray)
-                                    },
-                                    error: function (xhr) {
-                                        console.log('error', xhr);
-
-                                        //$('#rating-submit').removeClass('disabled');
-                                    }
-
-                                });
-
-                            }
-
-
-
-
-
-                            function userInterestStore(node) {
-
-                                $(node).addClass('disabled');
-
-
-                                college_id = '7113';
-
-                                $.ajax({
-                                    url: "/interest/store",
-                                    method: "post",
-                                    data: {
-                                        college_id: college_id,
-                                        rating_type: 'college'
-
-                                    },
-                                    success: function (data) {
-                                        dataArray = JSON.parse(data);
-                                        console.log(dataArray);
-                                        if (dataArray['status'] == 'success') {
-                                            $(node).text('APPLIED');
-                                            $(node).removeClass('btn-danger');
-                                            $(node).addClass('btn-primary');
-                                            $(node).prop("onclick", null).off("click");
-
-                                        }
-                                        $(node).removeClass('disabled');
-                                        console.log(dataArray)
-                                    },
-                                    error: function (xhr) {
-                                        console.log('error', xhr);
-
-                                        $(node).removeClass('disabled');
-                                    }
-
-                                });
-
-
-
-                            }
-
-
-
-
-
-                            function addFav(node, type) {
-
-
-                                window.location = "https://auth.aglasem.com/login?action=login&url=http://colleges.aglasem.com/ace-college-of-engineering--management-agra/home";
-
-
-
-                                //$(node).addClass('disabled');
-
-                                var fav = $(node).data('fav');
-
-
-                                college_id = '7113';
-
-                                $.ajax({
-                                    url: "/interest/store",
-                                    method: "post",
-                                    data: {
-                                        college_id: college_id,
-                                        rating_type: 'add_to_fav',
-                                        fav: fav
-
-                                    },
-                                    success: function (data) {
-                                        dataArray = JSON.parse(data);
-                                        console.log(dataArray);
-                                        if (dataArray['status'] == 'success') {
-
-                                            if (fav == 'add') {
-                                                $(node).data('fav', 'remove');
-                                                $(node).html('<i class="fas fa-heart text-danger ml-2 cursor-pointer" title="Add to favourite"></i>');
-                                            } else {
-                                                $(node).data('fav', 'add');
-
-                                                if (type == 'university') {
-                                                    $(node).html('<i class="far fa-heart text-white ml-2 cursor-pointer" title="Add to favourite"></i>');
-                                                } else {
-                                                    $(node).html('<i class="far fa-heart  ml-2 cursor-pointer" title="Add to favourite"></i>');
-                                                }
-
-
-                                            }
-                                        }
-
-                                    },
-                                    error: function (xhr) {
-                                        console.log('error', xhr);
-
-                                        $(node).removeClass('disabled');
-                                    }
-
-                                });
-
-
-
-                            }
-                        </script>
+ 
                         <script>
                             $("#button").click(function () {
                                 $('html, body').animate({
