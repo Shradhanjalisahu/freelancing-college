@@ -21,5 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::post("add",[ApiFormController::class,'add']);
 //getCourseDetail
-//Route::get("course", 'Api\CourseController@getCourseDetail');
-Route::get("course",[CourseController::class,'getCourseDetail']);
+Route::get("course/fees", 'Api\CourseController@getCourseFees');

@@ -415,14 +415,11 @@ class CollegeadminController extends Controller
        {
 
         $this->validate($request,[
-            'college_id' => 'required|max:255',
             'courseName' => 'required|max:255',
-            'course_details' => 'required',
-            
+            'course_details' => 'required'
         ]);
 
         $courses = new Course;
-        $courses->college_id = $request->college_id;
         $courses->courseName = $request->courseName;
         $courses->course_details = $request->course_details;
 
