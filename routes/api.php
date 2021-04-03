@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiFormController;
+use App\Http\Controllers\Api\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("add",[ApiFormController::class,'add']);
+//Route::post("add",[ApiFormController::class,'add']);
+//getCourseDetail
+//Route::get("course", 'Api\CourseController@getCourseDetail');
+Route::get("course",[CourseController::class,'getCourseDetail']);
