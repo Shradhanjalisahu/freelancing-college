@@ -87,5 +87,22 @@
     
     
     @yield('script')
+    <script type="text/javascript">
+        $(document).ready(function(e){
+           $('.admission-process').on('change', function(e){
+               console.log(typeof $(this).val())
+               if($(this).val() == 'true'){
+                    console.log('hide other admission process')
+                    $('.own-admission-process').show();
+                    $('.other-admission-process').hide();
+               }else{
+                   console.log('hide own admission process')
+                   console.log($('.own-admission-process'))
+                    $('.own-admission-process').hide();
+                    $('.other-admission-process').show();
+               }
+           })
+        });
+    </script>
 </body>
 </html>

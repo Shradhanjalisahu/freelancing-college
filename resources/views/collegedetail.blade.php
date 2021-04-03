@@ -1417,73 +1417,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <h5 class="mt-0"> Courses Offered </h5>
-                                                    <div class="accordion-group border">
-                                                        <div class="accordion-heading">
-                                                            <a class="accordion-toggle" data-toggle="collapse"
-                                                                href="#collapse1">
-                                                                B.Tech <i class="fa fa-minus float-right mt-1"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div id="collapse1" class="accordion-body collapse in show"
-                                                            data-parent="#accordion-all">
-                                                            <div class="accordion-inner">
-                                                                <table
-                                                                    class="table table-responsive-sm table-responsive-md">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col"># </th>
-                                                                            <th scope="col">Course </th>
-                                                                            <th scope="col">Fees </th>
-                                                                            <th scope="col">Duration </th>
-                                                                            <th scope="col">Type </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th scope="row">1 </th>
-                                                                            <td>Bachelor of Technology [B.Tech] </td>
-                                                                            <td>₹ 71300/yr </td>
-                                                                            <td>4 Years </td>
-                                                                            <td>Full Time </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-group border">
-                                                        <div class="accordion-heading">
-                                                            <a class="accordion-toggle" data-toggle="collapse"
-                                                                href="#collapse42">
-                                                                Diploma <i class="fa fa-plus float-right mt-1"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div id="collapse42" class="accordion-body collapse in collapse"
-                                                            data-parent="#accordion-all">
-                                                            <div class="accordion-inner">
-                                                                <table
-                                                                    class="table table-responsive-sm table-responsive-md">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col"># </th>
-                                                                            <th scope="col">Course </th>
-                                                                            <th scope="col">Fees </th>
-                                                                            <th scope="col">Duration </th>
-                                                                            <th scope="col">Type </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th scope="row">1 </th>
-                                                                            <td>Diploma </td>
-                                                                            <td>₹ 50000/yr </td>
-                                                                            <td>3 Years </td>
-                                                                            <td>Full Time </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
+                                                    <div id="about-course-offered">
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2059,6 +1994,7 @@
             var helpers = {
                 renderCourseFees: function(data){
                     $('#course-fees-list').html('');
+                    $('#about-course-offered').html('');
                     var htmls = '';
                     for (var key in data) {
                         var element = data[key];
@@ -2106,6 +2042,7 @@
                         `;
                     }
                     $('#course-fees-list').append(htmls);
+                    $('#about-course-offered').html(htmls);
                     jQuery('.accordion-toggle').click(function () {
                         var has = jQuery(this);
                         if (has.hasClass('collapsed')) {
@@ -2196,22 +2133,7 @@
                             }
                         })
                     }
-                }
-
-                // jQuery('.accordion-toggle').click(function () {
-                //     var has = jQuery(this);
-                //     if (has.hasClass('collapsed')) {
-                //         jQuery(this).find('i').removeClass('fa-plus');
-                //         jQuery(this).find('i').addClass('fa-minus');
-                //     }
-                //     else {
-                //         jQuery(this).find('i').removeClass('fa-minus');
-                //         jQuery(this).find('i').addClass('fa-plus');
-                //     }
-                // });
-
-                
-                
+                }                
             });
         </script>
 </body>

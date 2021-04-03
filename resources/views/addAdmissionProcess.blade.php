@@ -91,59 +91,63 @@
 								
 								<div class="form-group col-md-12 mb-6" >
 									<label for="listingTitle">Own Addmission Process</label>
-								        <label><input type="radio" name="own_admission_process" value="true"> Yes</label>
-								        <label><input type="radio" name="own_admission_process" value="false"> No</label>
+								        <label><input type="radio" class="admission-process" name="own_admission_process" value="true" checked> Yes</label>
+								        <label><input type="radio" class="admission-process" name="own_admission_process" value="false"> No</label>
 								        
                                 </div>
-                            <div class="form-group col-md-6 mb-6">
+
+								<div class="form-group col-md-6 mb-6 own-admission-process">
 									<label for="discribeTheListing">Admission process</label>
-									<textarea class="form-control @error('admission_process') is-invalid @enderror" name="admission_process" rows="6"  >{{old('admission_process')}}</textarea>
+									<textarea class="form-control @error('admission_process') is-invalid @enderror" name="admission_process" rows="6"  >
+										{{old('admission_process')}}
+									</textarea>
 									@error('admission_process')
 										<div class="invalid-feedback">
 											{{$message}}
-									  	</div>
+										</div>
 									@enderror
 								</div>
-								<div class="form-group col-md-6 mb-6">
+								<div class="form-group col-md-6 mb-6 own-admission-process">
 									<label for="discribeTheListing">Admission Process detail</label>
 									<textarea class="form-control @error('admission_process_detail') is-invalid @enderror" name="admission_process_detail" rows="6"   >{{old('admission_process_detail')}}</textarea>
 									@error('admission_process_detail')
 										<div class="invalid-feedback">
 											{{$message}}
-									  	</div>
+										</div>
 									@enderror
 								</div>
-								<div class="form-group col-md-6 mb-6">
+
+								<div class="form-group col-md-6 mb-6 other-admission-process" style="display:none;">
 									<label for="discribeTheListing">Admission Process link</label>
 									<textarea class="form-control @error('admission_process_link') is-invalid @enderror" name="admission_process_link" rows="6"   >{{old('admission_process_link')}}</textarea>
 									@error('admission_process_link')
 										<div class="invalid-feedback">
 											{{$message}}
-									  	</div>
+										</div>
 									@enderror
 								</div>
-								<div class="form-group col-md-6 mb-6">
+								<div class="form-group col-md-6 mb-6 other-admission-process" style="display:none;">
 									<label for="discribeTheListing">Admission Process Link Text</label>
 									<textarea class="form-control @error('admission_process_link_text') is-invalid @enderror" name="admission_process_link_text" rows="6" >{{old('admission_process_link_text')}}</textarea>
 									@error('admission_process_link_text')
 										<div class="invalid-feedback">
 											{{$message}}
-									  	</div>
+										</div>
 									@enderror
 								</div>
-								
-								
-								
+									
+									
+									
 							</div>
-							<div class="form-group row mb-0">
-								<div class="col-md-6 offset-md-4">
-									<button type="submit" class="btn btn-primary">
-									{{ __('Register') }}
-									</button>
-									<a href="/" class="btn btn-secondary"> Go Back</a>
+								<div class="form-group row mb-0">
+									<div class="col-md-6 offset-md-4">
+										<button type="submit" class="btn btn-primary">
+										{{ __('Register') }}
+										</button>
+										<a href="/" class="btn btn-secondary"> Go Back</a>
+									</div>
+			
 								</div>
-		
-							</div>
 						</form>
 					</div>
 				</div>
@@ -152,4 +156,6 @@
 		</section>
 	</div>
 @endsection
+
+
 
