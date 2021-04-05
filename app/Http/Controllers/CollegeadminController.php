@@ -495,22 +495,31 @@ public function addCoursefees(Request $request)
 
    public function saveAdmissionprocess(Request $request)
        {
+       
 
-        
 
         $admissionprocess= new Addmissionprocess;
         $admissionprocess->college_id = $request->college_id;
         $admissionprocess->course_id = $request->course_id;
-        $admissionprocess->admission_process = $request->admission_process;
-        $admissionprocess->admission_process_detail = $request->admission_process_detail;
-        $admissionprocess->admission_process_link = $request->admission_process_link;
-        $admissionprocess->admission_process_link_text = $request->admission_process_link_text;
         $admissionprocess->own_admission_process = $request->own_admission_process;
+        if($request->own_admission_process== "true"){
+            $admissionprocess->admission_process = $request->admission_process;
+            $admissionprocess->admission_process_detail = $request->admission_process_detail;
+                 
+          }else{
+            $admissionprocess->admission_process_link = $request->admission_process_link;
+            $admissionprocess->admission_process_link_text = $request->admission_process_link_text;
+            
+        }
+        
+        
+        
 
         $admissionprocess->save();
         return redirect('addadmissionprocess')->with('success','CourseMapping added successfully');
         
       }
+
 
 
        public function addFacilities(Request $request)
