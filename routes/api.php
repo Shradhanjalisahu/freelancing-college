@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\FacilitiesController;
+use App\Http\Controllers\Api\CollegeHostelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::post("add",[ApiFormController::class,'add']);
 //getCourseDetail
 Route::get("course/fees", 'Api\CourseController@getCourseFees');
+Route::get("facilities", 'Api\FacilitiesController@getFacilities');
+Route::get("hosteles", 'Api\CollegeHostelController@getHostelFacilities');
