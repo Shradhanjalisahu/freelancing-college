@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\FacilitiesController;
 use App\Http\Controllers\Api\CollegeHostelController;
+use App\Http\Controllers\Api\AdmissionController;
+
+/*
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get("course/fees", 'Api\CourseController@getCourseFees');
 Route::get("facilities", 'Api\FacilitiesController@getFacilities');
 Route::get("hosteles", 'Api\CollegeHostelController@getHostelFacilities');
+Route::get("admissionprocess", 'Api\AdmissionController@getAdmissionProcess');
